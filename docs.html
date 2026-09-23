@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080a0f">
   <meta name="color-scheme" content="dark">
-  <meta name="description" content="Stable public documentation for Legacy Shader Bridge.">
+  <meta name="description" content="Legacy Shader Bridge documentation portal.">
   <link rel="icon" type="image/webp" href="./assets/lsb-icon.webp">
   <link rel="stylesheet" href="./styles.css">
-  <title>Legacy Shader Bridge — Docs</title>
+  <title>Legacy Shader Bridge — Documentation</title>
 </head>
 <body class="docs-page">
   <main class="site" id="top">
@@ -31,7 +31,6 @@
         <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span></button>
       </div>
     </header>
-
     <div class="mobile-menu" aria-hidden="true">
       <div class="mobile-menu-head">
         <a class="brand" href="./index.html"><span class="brand-mark"><img src="./assets/lsb-icon.webp" alt=""></span><span class="brand-copy"><strong>LSB</strong><small>Legacy Shader Bridge</small></span></a>
@@ -49,63 +48,45 @@
         <a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">MODRINTH <span aria-hidden="true">→</span></a>
       </div>
     </div>
-
-    <section class="docs-hero">
-      <div class="docs-shell" data-reveal>
-        <p class="eyebrow" data-i18n="docs.eyebrow">Stable documentation</p>
-        <h1 data-i18n="docs.title">Stable contracts, not moving implementation details.</h1>
-        <p data-i18n="docs.lead">This page documents the parts of LSB that are intended to remain true across development. Version-specific renderer frontiers, temporary diagnostics and experimental internals stay out of the public documentation until they stabilize.</p>
-      </div>
-    </section>
-
-    <section class="docs-content">
-      <div class="docs-shell">
-        <div class="docs-grid">
-          <article class="docs-card docs-card--wide" data-reveal>
-            <span>01 / LSB</span>
-            <h2 data-i18n="docs.model.title">Project model</h2>
-            <p data-i18n="docs.model.body">LSB is an independent client-side Vulkan rendering project for Minecraft. The current frontend reconstructs legacy Iris / OptiFine-style shader behavior. A future native LSB shader frontend is intended to use the same renderer core directly.</p>
-          </article>
-          <article class="docs-card" data-reveal>
-            <span>02 / PLATFORM</span>
-            <h2 data-i18n="docs.platform.title">Current platform</h2>
-            <p data-i18n="docs.platform.body">The active development line targets Minecraft 26.x on Fabric with Java 25+. LSB is client-side and uses a native Vulkan rendering path.</p>
-          </article>
-          <article class="docs-card" data-reveal>
-            <span>03 / INDEPENDENCE</span>
-            <h2 data-i18n="docs.independence.title">Renderer independence</h2>
-            <p data-i18n="docs.independence.body">Renderer integrations are adapters rather than foundations. Sodium support is optional: it may provide acceleration or lifecycle integration when present, but LSB core is designed to remain functional without making Sodium a mandatory dependency.</p>
-          </article>
-          <article class="docs-card" data-reveal>
-            <span>04 / LEGACY</span>
-            <h2 data-i18n="docs.legacy.title">Legacy frontend</h2>
-            <p data-i18n="docs.legacy.body">Legacy compatibility reconstructs shader-visible contracts such as render stages, resources, attachments, frame state, ordering and texture or sampler semantics. Unsupported behavior should remain explicit instead of being silently replaced by convincing but incorrect data.</p>
-          </article>
-          <article class="docs-card" data-reveal>
-            <span>05 / NATIVE</span>
-            <h2 data-i18n="docs.native.title">Native direction</h2>
-            <p data-i18n="docs.native.body">The native LSB shader API is a future stage and is not available yet. Its goal is to expose modern renderer capabilities without forcing shader authors through historical OptiFine, Iris or OpenGL-era conventions.</p>
-          </article>
-          <article class="docs-card" data-reveal>
-            <span>06 / WORKLOAD</span>
-            <h2 data-i18n="docs.photon.title">Photon in development</h2>
-            <p data-i18n="docs.photon.body">Photon is currently used as a demanding real-world workload and stress test for the legacy side of the bridge. LSB is not a Photon-specific renderer, and Photon is not the final scope of the project.</p>
-          </article>
-          <article class="docs-card" data-reveal>
-            <span>07 / REPORTING</span>
-            <h2 data-i18n="docs.report.title">Diagnostics and reports</h2>
-            <p data-i18n="docs.report.body">For rendering issues, a complete game log and a short reproduction recording are more useful than an isolated screenshot. Expensive diagnostics are intended to stay opt-in rather than becoming permanent release overhead.</p>
-          </article>
+    <div class="docs-portal">
+      <aside class="docs-sidebar">
+    <a class="docs-sidebar-brand" href="./docs.html"><img src="./assets/lsb-icon.webp" alt=""><strong>LSB DOCS</strong></a>
+    <div class="docs-sidebar-group"><span data-i18n="docs.side.start">Start here</span>
+      <a href="./docs.html" aria-current="page"><span data-i18n="docs.nav.home">home</span></a>
+      <a href="./docs/start.html"><span data-i18n="docs.nav.start">start</span></a>
+    </div>
+    <div class="docs-sidebar-group"><span data-i18n="docs.side.concepts">Concepts</span>
+      <a href="./docs/renderer.html"><span data-i18n="docs.nav.renderer">renderer</span></a>
+      <a href="./docs/legacy.html"><span data-i18n="docs.nav.legacy">legacy</span></a>
+    </div>
+    <div class="docs-sidebar-group"><span data-i18n="docs.side.development">Development</span>
+      <a href="./docs/diagnostics.html"><span data-i18n="docs.nav.diagnostics">diagnostics</span></a>
+    </div>
+    <div class="docs-sidebar-group"><span data-i18n="docs.side.future">Future</span>
+      <a href="./docs/native.html"><span data-i18n="docs.nav.native">native</span><em>PLANNED</em></a>
+    </div>
+  </aside>
+      <section class="docs-main">
+        <div class="docs-landing-hero" data-reveal>
+          <p class="eyebrow" data-i18n="docs.portal.kicker">Documentation</p>
+          <h1 data-i18n="docs.portal.title">Start with the renderer model.</h1>
+          <p data-i18n="docs.portal.lead">LSB documentation is structured as a path: understand the project first, then the renderer, the legacy frontend, diagnostics, and finally the planned native direction.</p>
+          <div class="docs-landing-actions">
+            <a class="button button-primary" href="./docs/start.html"><span data-i18n="docs.portal.start">Start here</span><span aria-hidden="true">→</span></a>
+            <a class="button button-ghost" href="./index.html"><span data-i18n="docs.portal.site">Project site</span></a>
+          </div>
         </div>
-        <div class="docs-note" data-reveal data-i18n="docs.stability">Intentionally omitted here: current pass counts, temporary shadow milestones, diagnostic-only state and unstable native API syntax. Those belong to changelogs and development notes until they become durable contracts.</div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <a class="brand" href="./index.html"><span class="brand-mark"><img src="./assets/lsb-icon.webp" alt=""></span><span class="brand-copy"><strong>LSB</strong><small>Legacy Shader Bridge</small></span></a>
-      <p data-i18n="footer">Legacy Shader Bridge · by Onelsey</p>
-      <nav><a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth</a><a href="./index.html">Home</a></nav>
-    </footer>
+        <div class="docs-stable-note" data-reveal data-i18n="docs.portal.stable">Only stable contracts are documented here.</div>
+        <div class="docs-topic-grid">
+          <a class="docs-topic-card" href="./docs/start.html" data-reveal><div class="docs-topic-card-head"><span>01 / START</span><span class="docs-doc-badge" data-i18n="docs.badge.available">Available</span></div><h2 data-i18n="docs.card.start.title">Getting started</h2><p data-i18n="docs.card.start.body"></p></a>
+          <a class="docs-topic-card" href="./docs/renderer.html" data-reveal><div class="docs-topic-card-head"><span>02 / RENDERER</span><span class="docs-doc-badge" data-i18n="docs.badge.available">Available</span></div><h2 data-i18n="docs.card.renderer.title">Renderer model</h2><p data-i18n="docs.card.renderer.body"></p></a>
+          <a class="docs-topic-card" href="./docs/legacy.html" data-reveal><div class="docs-topic-card-head"><span>03 / LEGACY</span><span class="docs-doc-badge" data-i18n="docs.badge.available">Available</span></div><h2 data-i18n="docs.card.legacy.title">Legacy frontend</h2><p data-i18n="docs.card.legacy.body"></p></a>
+          <a class="docs-topic-card" href="./docs/diagnostics.html" data-reveal><div class="docs-topic-card-head"><span>04 / REPORTING</span><span class="docs-doc-badge" data-i18n="docs.badge.available">Available</span></div><h2 data-i18n="docs.card.diagnostics.title">Diagnostics</h2><p data-i18n="docs.card.diagnostics.body"></p></a>
+          <a class="docs-topic-card" href="./docs/native.html" data-reveal><div class="docs-topic-card-head"><span>05 / FUTURE</span><span class="docs-doc-badge docs-doc-badge--planned" data-i18n="docs.badge.planned">Planned</span></div><h2 data-i18n="docs.card.native.title">Native LSB</h2><p data-i18n="docs.card.native.body"></p></a>
+        </div>
+        <footer class="docs-portal-footer"><span>Legacy Shader Bridge · by Onelsey</span><a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth →</a></footer>
+      </section>
+    </div>
   </main>
   <script src="./app.js" defer></script>
 </body>
