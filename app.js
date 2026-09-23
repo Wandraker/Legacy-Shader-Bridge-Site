@@ -158,7 +158,7 @@ const translations = {
     "license.copy": "Canonical public copy of the license distributed with Legacy Shader Bridge.",
     "license.authority": "The English text is the authoritative license. The Russian translation is provided for convenience.",
     "license.home": "Home",
-    "footer": "Legacy Shader Bridge · by Onelsey"
+    "footer": "© 2026 Onelsey. All rights reserved."
   },
   ru: {
     "nav.bridge": "Мост",
@@ -320,7 +320,7 @@ const translations = {
     "license.copy": "Публичная копия лицензии, распространяемой вместе с Legacy Shader Bridge.",
     "license.authority": "Юридически применимой версией лицензии является английский текст. Русский перевод предоставлен для удобства.",
     "license.home": "Главная",
-    "footer": "Legacy Shader Bridge · by Onelsey"
+    "footer": "© 2026 Onelsey. Все права защищены."
   }
 };
 
@@ -352,6 +352,13 @@ function setLanguage(language) {
   if (document.body.classList.contains("license-page")) {
     document.title = language === "ru" ? "Legacy Shader Bridge — Лицензия" : "Legacy Shader Bridge — License";
   }
+  const copyrightText = language === "ru"
+    ? "© 2026 Onelsey. Все права защищены."
+    : "© 2026 Onelsey. All rights reserved.";
+  const docsCopyright = document.querySelector(".docs-portal-footer > span:first-child");
+  if (docsCopyright) docsCopyright.textContent = copyrightText;
+  const licenseCopyright = document.querySelector(".license-footer > span:first-child");
+  if (licenseCopyright) licenseCopyright.textContent = copyrightText;
   const description = language === "ru"
     ? "Независимый Vulkan shader runtime для Minecraft: legacy-совместимость сейчас, нативные шейдеры LSB — следующий этап."
     : "Independent Vulkan shader runtime for Minecraft: legacy compatibility today, native LSB shaders next.";
