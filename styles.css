@@ -373,3 +373,23 @@ a.docs-topic-card:hover { transform: translateY(-2px); border-color: var(--line-
   .docs-pager-next { text-align: left; }
   .docs-portal-footer { flex-direction: column; }
 }
+
+.license-page { background: #080a0f; color: var(--text); }
+.license-shell { width: min(900px, calc(100% - 48px)); margin: 0 auto; padding: 56px 0 72px; }
+.license-back { display: inline-block; color: #7f899a; font-size: 12px; transition: color .2s ease; }
+.license-back:hover { color: #fff; }
+.license-head { margin-top: 76px; padding-bottom: 34px; border-bottom: 1px solid var(--line); }
+.license-head > span { color: #697386; font: 700 9px/1 ui-monospace, monospace; letter-spacing: .12em; }
+.license-head h1 { max-width: 820px; margin: 18px 0 0; font-size: clamp(38px, 6vw, 66px); font-weight: 580; line-height: .98; letter-spacing: -.055em; }
+.license-head p { max-width: 680px; margin: 20px 0 0; color: #8f98a8; font-size: 13px; line-height: 1.7; }
+.license-text { margin: 0; padding: 42px 0; white-space: pre-wrap; overflow-wrap: anywhere; color: #c2c8d2; background: transparent; border: 0; font: 400 13px/1.8 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.license-footer { display: flex; justify-content: space-between; gap: 24px; padding-top: 24px; border-top: 1px solid var(--line); color: #687386; font-size: 10px; }
+.license-footer nav { display: flex; gap: 20px; }
+.license-footer a:hover { color: #fff; }
+@media (max-width: 620px) {
+  .license-shell { width: calc(100% - 32px); padding: 34px 0 52px; }
+  .license-head { margin-top: 52px; }
+  .license-head h1 { font-size: clamp(34px, 11vw, 50px); }
+  .license-text { font-size: 12px; line-height: 1.72; }
+  .license-footer { flex-direction: column; }
+}
