@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080a0f">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Legacy Shader Bridge brings legacy Minecraft shader-pack semantics onto a native Vulkan rendering path.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Legacy Shader Bridge">
+  <meta property="og:description" content="Classic shader pipelines. Modern rendering. One bridge between them.">
+  <meta property="og:image" content="./lsb-icon.png">
+  <link rel="icon" type="image/png" href="./lsb-icon.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Legacy Shader Bridge</title>
+</head>
+<body>
+  <main class="site" id="top">
+    <div class="ambient ambient--a" aria-hidden="true"></div>
+    <div class="ambient ambient--b" aria-hidden="true"></div>
+
+    <header class="header">
+      <a class="brand" href="#top" aria-label="Legacy Shader Bridge home">
+        <span class="brand-mark"><img src="./lsb-icon.png" alt=""></span>
+        <span class="brand-copy"><strong>LSB</strong><small>Legacy Shader Bridge</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#bridge" data-i18n="nav.bridge">Bridge</a>
+        <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
+        <a href="#status" data-i18n="nav.status">Status</a>
+        <a href="#future" data-i18n="nav.future">Future</a>
+      </nav>
+      <div class="header-actions">
+        <div class="language-switch" aria-label="Language">
+          <button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button>
+        </div>
+        <a class="header-source" href="https://github.com/Wandraker/Legacy-Shader-Bridge-Site" target="_blank" rel="noreferrer" aria-label="Website source on GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-github"><path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.6-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.5 1 2.6 0 3.8-2.3 4.6-4.6 4.9.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"></path></svg>
+        </a>
+        <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </header>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu-head">
+        <a class="brand" href="#top"><span class="brand-mark"><img src="./lsb-icon.png" alt=""></span><span class="brand-copy"><strong>LSB</strong><small>Legacy Shader Bridge</small></span></a>
+        <button class="menu-close" type="button" data-i18n="ui.close">Close</button>
+      </div>
+      <nav>
+        <a href="#bridge">01 / <span data-i18n="nav.bridge">Bridge</span></a>
+        <a href="#architecture">02 / <span data-i18n="nav.architecture">Architecture</span></a>
+        <a href="#status">03 / <span data-i18n="nav.status">Status</span></a>
+        <a href="#future">04 / <span data-i18n="nav.future">Future</span></a>
+      </nav>
+      <div class="mobile-menu-bottom">
+        <div class="language-switch" aria-label="Language"><button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button></div>
+        <a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">MODRINTH <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow" data-reveal data-i18n="hero.eyebrow">Minecraft 26.x · Fabric · Native Vulkan</p>
+          <h1 class="hero-title" aria-label="Legacy Shader Bridge">
+            <span data-reveal>LEGACY</span><span data-reveal>SHADER</span><span class="hero-title-accent" data-reveal>BRIDGE</span>
+          </h1>
+          <p class="hero-lead" data-reveal data-i18n="hero.lead">Classic shader pipelines. Modern rendering. One bridge between them.</p>
+          <p class="hero-body" data-reveal data-i18n="hero.body">LSB reconstructs the rendering contracts legacy Iris / OptiFine-style shader packs expect and carries them onto Minecraft's native Vulkan-era rendering stack — without an OpenGL compatibility renderer.</p>
+          <div class="hero-actions" data-reveal>
+            <a class="button button-primary" href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer"><span data-i18n="hero.get">Get LSB</span><span aria-hidden="true">→</span></a>
+            <a class="button button-ghost" href="https://github.com/Wandraker/Legacy-Shader-Bridge" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" class="icon-github"><path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.6-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.5 1 2.6 0 3.8-2.3 4.6-4.6 4.9.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"></path></svg><span data-i18n="hero.source">Source</span></a>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-reveal>
+          <div class="hero-icon-wrap"><img src="./lsb-icon.png" alt="Legacy Shader Bridge icon"></div>
+          <div class="pipeline-card" aria-label="Legacy Shader Bridge pipeline">
+            <div class="pipeline-topline"><span data-i18n="pipeline.label">LIVE PIPELINE MODEL</span><span class="live-dot"><i></i> ALPHA</span></div>
+            <div class="pipeline-flow">
+              <div class="pipeline-step pipeline-step--legacy"><span class="pipeline-id">01</span><div><strong data-i18n="pipeline.legacy">Legacy shader pack</strong><small>GLSL / legacy semantics</small></div></div>
+              <div class="pipeline-link" aria-hidden="true"><span></span><b>↓</b></div>
+              <div class="pipeline-step pipeline-step--bridge"><span class="pipeline-id">02</span><div><strong data-i18n="pipeline.compat">Compatibility frontend</strong><small>translate · reconstruct · validate</small></div><div class="bridge-pulse" aria-hidden="true"><span></span><span></span><span></span></div></div>
+              <div class="pipeline-link" aria-hidden="true"><span></span><b>↓</b></div>
+              <div class="pipeline-step pipeline-step--contract"><span class="pipeline-id">03</span><div><strong data-i18n="pipeline.contracts">Renderer contracts</strong><small>state · resources · ordering</small></div></div>
+              <div class="pipeline-link" aria-hidden="true"><span></span><b>↓</b></div>
+              <div class="pipeline-step pipeline-step--native"><span class="pipeline-id">04</span><div><strong data-i18n="pipeline.vulkan">Native Vulkan backend</strong><small>native execution</small></div></div>
+            </div>
+            <div class="pipeline-foot"><span>FAIL-CLOSED BY DEFAULT</span><span data-i18n="pipeline.noFallback">No OpenGL fallback</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-meta"><span><i class="status-dot"></i> <b data-i18n="hero.alpha">Active alpha</b></span><span>CLIENT-SIDE</span><span>FABRIC</span><span>JAVA 25+</span></div>
+    </section>
+
+    <section class="section bridge-section" id="bridge">
+      <div class="section-shell">
+        <header class="section-head" data-reveal>
+          <div><p class="eyebrow">01 / <span data-i18n="bridge.eyebrow">What the bridge actually does</span></p><h2 data-i18n="bridge.title">Compatibility without pretending the old renderer still exists.</h2></div>
+          <p data-i18n="bridge.lead">LSB is not a shader pack and not an OpenGL wrapper. It rebuilds the semantics packs rely on — then feeds them into a renderer with explicit Vulkan-era ownership, state and ordering.</p>
+        </header>
+        <div class="bridge-cards">
+          <article class="bridge-card" data-reveal><div class="bridge-card-index">01</div><div class="bridge-card-graphic" aria-hidden="true"><span class="beam beam-a"></span><span class="beam beam-b"></span><span class="beam beam-c"></span></div><h3 data-i18n="bridge.card1.title">Semantics</h3><p data-i18n="bridge.card1.body">Frame state, render stages, sampler bindings, attachments and ordering are treated as contracts — not visual guesses.</p></article>
+          <article class="bridge-card" data-reveal><div class="bridge-card-index">02</div><div class="bridge-card-graphic" aria-hidden="true"><span class="beam beam-a"></span><span class="beam beam-b"></span><span class="beam beam-c"></span></div><h3 data-i18n="bridge.card2.title">Geometry</h3><p data-i18n="bridge.card2.body">Terrain and scene geometry are carried through explicit ownership and provenance instead of fabricated compatibility data.</p></article>
+          <article class="bridge-card" data-reveal><div class="bridge-card-index">03</div><div class="bridge-card-graphic" aria-hidden="true"><span class="beam beam-a"></span><span class="beam beam-b"></span><span class="beam beam-c"></span></div><h3 data-i18n="bridge.card3.title">Execution</h3><p data-i18n="bridge.card3.body">The target is real native execution on the modern renderer, with unsupported paths staying fail-closed until proven.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section architecture-section" id="architecture">
+      <div class="section-shell">
+        <header class="section-head section-head-light" data-reveal>
+          <div><p class="eyebrow">02 / <span data-i18n="arch.eyebrow">Architecture</span></p><h2 data-i18n="arch.title">Two frontends. One renderer.</h2></div>
+          <p data-i18n="arch.lead">The legacy path is only one side of the bridge. The long-term architecture keeps compatibility and a future native LSB shader API above the same Vulkan renderer foundation.</p>
+        </header>
+        <div class="architecture-map" data-reveal>
+          <div class="arch-node arch-node--legacy"><span>FRONTEND / LEGACY</span><strong data-i18n="arch.legacy.title">Legacy today</strong><p data-i18n="arch.legacy.body">Existing shader packs enter through a compatibility frontend that reconstructs the behavior they expect.</p><div class="code-line">shaders/ → compatibility</div></div>
+          <div class="arch-merge" aria-hidden="true"><span></span><b>LSB</b><span></span></div>
+          <div class="arch-node arch-node--native"><span>FRONTEND / NATIVE</span><strong data-i18n="arch.native.title">Native tomorrow</strong><p data-i18n="arch.native.body">A future LSB-native shader path can expose modern resources and scheduling without forcing everything through historical OpenGL-era assumptions.</p><div class="code-line">lsb/ → versioned API</div></div>
+          <div class="arch-spine" aria-hidden="true"><span></span></div>
+          <div class="arch-renderer"><div><span>UNIFIED BACKEND</span><strong data-i18n="arch.renderer.title">Shared renderer</strong></div><p data-i18n="arch.renderer.body">Explicit targets, dependencies, ownership, synchronization, scene submission and native Vulkan execution live underneath both paths.</p><div class="renderer-tags"><span>scene</span><span>resources</span><span>passes</span><span>sync</span><span>Vulkan</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section status-section" id="status">
+      <div class="section-shell">
+        <header class="section-head" data-reveal>
+          <div><p class="eyebrow">03 / <span data-i18n="status.eyebrow">Project state</span></p><h2 data-i18n="status.title">Built in public-facing alpha, tested like renderer infrastructure.</h2></div>
+          <p data-i18n="status.lead">Compatibility is intentionally incomplete. LSB opens stages only when their required data and producer state have been demonstrated in runtime testing.</p>
+        </header>
+        <div class="status-layout">
+          <div class="status-matrix" data-reveal>
+            <div><span data-i18n="status.target.label">Target</span><strong>Minecraft 26.x</strong></div>
+            <div><span>Loader</span><strong>Fabric</strong></div>
+            <div><span>Java</span><strong>25+</strong></div>
+            <div><span>Renderer</span><strong>Native Vulkan</strong></div>
+            <div><span>Sodium</span><strong data-i18n="status.sodium">Optional adapter</strong></div>
+            <div><span>Shader work</span><strong data-i18n="status.work">Active alpha</strong></div>
+          </div>
+          <aside class="frontier-card" data-reveal>
+            <div class="frontier-head"><span>RUNTIME FRONTIER</span><span class="live-dot"><i></i> ACTIVE</span></div>
+            <h3 data-i18n="status.frontier.title">Current engineering focus</h3><p data-i18n="status.frontier.body">Legacy frame and G-buffer semantics, scene submission, attachment provenance, terrain ownership and the shadow path are being brought across incrementally. Photon is used heavily because it exercises a broad legacy surface, but LSB is not designed around one shader pack.</p>
+            <div class="frontier-bars" aria-hidden="true"><span style="--w:92%"></span><span style="--w:83%"></span><span style="--w:74%"></span><span style="--w:61%"></span></div>
+            <small>FRAME / GBUFFER / SCENE / SHADOW</small>
+          </aside>
+        </div>
+        <div class="rules-block" data-reveal>
+          <div class="rules-title"><span>LSB / CONTRACT</span><h3 data-i18n="rules.title">Three rules LSB refuses to break</h3></div>
+          <div class="rules-list">
+            <article><span>01</span><div><strong data-i18n="rules.1.title">No fake producer data</strong><p data-i18n="rules.1.body">Missing data stays missing. Neutral placeholders are not promoted as if a real stage produced them.</p></div></article>
+            <article><span>02</span><div><strong data-i18n="rules.2.title">No accidental hard dependency</strong><p data-i18n="rules.2.body">Renderer integrations remain adapters. Sodium can accelerate or provide lifecycle hooks without becoming LSB core.</p></div></article>
+            <article><span>03</span><div><strong data-i18n="rules.3.title">No compile = pass shortcut</strong><p data-i18n="rules.3.body">A shader compiling is not enough. Runtime ownership, ordering and visible behavior still have to be proven.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section future-section" id="future">
+      <div class="future-grid" aria-hidden="true"></div>
+      <div class="section-shell future-shell">
+        <div class="future-copy" data-reveal><p class="eyebrow">04 / <span data-i18n="future.eyebrow">Beyond compatibility</span></p><h2 data-i18n="future.title">The bridge should eventually lead somewhere new.</h2><p data-i18n="future.body">Once the renderer fundamentals are stable across real packs, LSB can define a versioned native shader API with explicit render targets, compute workloads, storage resources, temporal lifetimes and modern dependency scheduling.</p><div class="future-tags"><span>explicit targets</span><span>compute passes</span><span>storage buffers</span><span>temporal resources</span><span>resource ownership</span><span>versioned API</span></div></div>
+        <div class="future-orbit" data-reveal aria-hidden="true"><div class="orbit orbit-a"><span></span></div><div class="orbit orbit-b"><span></span></div><div class="orbit orbit-c"><span></span></div><div class="orbit-core"><img src="./lsb-icon.png" alt=""></div><span class="orbit-label orbit-label-a">LEGACY</span><span class="orbit-label orbit-label-b">NATIVE</span><span class="orbit-label orbit-label-c">VULKAN</span></div>
+      </div>
+    </section>
+
+    <section class="final-section">
+      <div class="final-panel" data-reveal>
+        <div class="final-logo"><img src="./lsb-icon.png" alt=""></div>
+        <div><p class="eyebrow">LEGACY SHADER BRIDGE</p><h2 data-i18n="final.title">Bring legacy shader semantics into Minecraft's Vulkan era.</h2><p data-i18n="final.body">LSB is under active alpha development. Expect unfinished compatibility, aggressive correctness gates and frequent iteration.</p></div>
+        <div class="final-actions"><a class="button button-primary" href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer"><span data-i18n="final.get">Open on Modrinth</span><span aria-hidden="true">→</span></a><a class="button button-ghost" href="https://github.com/Wandraker/Legacy-Shader-Bridge-Site" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" class="icon-github"><path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.6-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.5 1 2.6 0 3.8-2.3 4.6-4.6 4.9.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"></path></svg> GitHub</a></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a class="brand" href="#top"><span class="brand-mark"><img src="./lsb-icon.png" alt=""></span><span class="brand-copy"><strong>LSB</strong><small>Legacy Shader Bridge</small></span></a>
+      <p data-i18n="footer">Legacy Shader Bridge · by Onelsey</p>
+      <nav><a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth</a><a href="https://github.com/Wandraker/Legacy-Shader-Bridge" target="_blank" rel="noreferrer">Source</a><a href="#top">↑ Top</a></nav>
+    </footer>
+  </main>
+  <script src="./app.js" defer></script>
+</body>
+</html>
