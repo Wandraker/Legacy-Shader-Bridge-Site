@@ -145,6 +145,12 @@ const translations = {
     "docs.pager.previous": "Previous",
     "docs.pager.next": "Next",
     "docs.pager.back": "Back to docs",
+    "license.back": "← Legacy Shader Bridge",
+    "license.label": "LICENSE",
+    "license.title": "Legacy Shader Bridge Source-Available License v1.0",
+    "license.copy": "Canonical public copy of the license distributed with Legacy Shader Bridge.",
+    "license.authority": "The English text is the authoritative license. The Russian translation is provided for convenience.",
+    "license.home": "Home",
     "footer": "Legacy Shader Bridge · by Onelsey"
   },
   ru: {
@@ -294,6 +300,12 @@ const translations = {
     "docs.pager.previous": "Назад",
     "docs.pager.next": "Дальше",
     "docs.pager.back": "К документации",
+    "license.back": "← Legacy Shader Bridge",
+    "license.label": "ЛИЦЕНЗИЯ",
+    "license.title": "Лицензия Legacy Shader Bridge с доступным исходным кодом v1.0",
+    "license.copy": "Публичная копия лицензии, распространяемой вместе с Legacy Shader Bridge.",
+    "license.authority": "Юридически применимой версией лицензии является английский текст. Русский перевод предоставлен для удобства.",
+    "license.home": "Главная",
     "footer": "Legacy Shader Bridge · by Onelsey"
   }
 };
@@ -320,6 +332,12 @@ function setLanguage(language) {
   document.querySelectorAll("[data-lang]").forEach((button) => {
     button.classList.toggle("active", button.getAttribute("data-lang") === language);
   });
+  document.querySelectorAll("[data-license-lang]").forEach((node) => {
+    node.hidden = node.getAttribute("data-license-lang") !== language;
+  });
+  if (document.body.classList.contains("license-page")) {
+    document.title = language === "ru" ? "Legacy Shader Bridge — Лицензия" : "Legacy Shader Bridge — License";
+  }
   const description = language === "ru"
     ? "Независимый Vulkan shader runtime для Minecraft: legacy-совместимость сейчас, нативные шейдеры LSB — следующий этап."
     : "Independent Vulkan shader runtime for Minecraft: legacy compatibility today, native LSB shaders next.";

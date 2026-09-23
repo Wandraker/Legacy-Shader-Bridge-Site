@@ -12,13 +12,19 @@
 </head>
 <body class="license-page">
   <main class="license-shell">
-    <a class="license-back" href="./index.html">← Legacy Shader Bridge</a>
+    <div class="license-topbar">
+      <a class="license-back" href="./index.html" data-i18n="license.back">← Legacy Shader Bridge</a>
+      <div class="language-switch" aria-label="Language">
+        <button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button>
+      </div>
+    </div>
     <header class="license-head">
-      <span>LICENSE</span>
-      <h1>Legacy Shader Bridge Source-Available License v1.0</h1>
-      <p>Canonical public copy of the license distributed with Legacy Shader Bridge.</p>
+      <span data-i18n="license.label">LICENSE</span>
+      <h1 data-i18n="license.title">Legacy Shader Bridge Source-Available License v1.0</h1>
+      <p data-i18n="license.copy">Canonical public copy of the license distributed with Legacy Shader Bridge.</p>
+      <p class="license-authority" data-i18n="license.authority">The English text is the authoritative license. The Russian translation is provided for convenience.</p>
     </header>
-    <pre class="license-text">Legacy Shader Bridge Source-Available License v1.0
+    <pre class="license-text" data-license-lang="en">Legacy Shader Bridge Source-Available License v1.0
 Copyright (c) 2026 Onelsey. All rights reserved except as expressly granted below.
 
 1. Scope
@@ -60,10 +66,52 @@ Your permissions under this license terminate automatically if you materially vi
 9. Source-available status
 This is a source-available license, not an OSI-approved open-source license. Rights not expressly granted are reserved by the copyright holder.
 </pre>
+    <pre class="license-text" data-license-lang="ru" hidden>Лицензия Legacy Shader Bridge с доступным исходным кодом v1.0
+Copyright (c) 2026 Onelsey. Все права защищены, кроме прямо предоставленных ниже.
+
+1. Область действия
+Настоящая лицензия распространяется на исходный код Legacy Shader Bridge, бинарные файлы, документацию и специфичные для проекта материалы, распространяемые вместе с этим проектом, если в конкретном файле не указаны иные условия. Стороннее программное обеспечение, API, shaderpack'и, названия, форматы и материалы остаются под действием собственных лицензий и прав.
+
+2. Разрешённое использование
+Вы можете:
+- скачивать и использовать официальные скомпилированные релизы в личных и некоммерческих целях;
+- изучать исходный код;
+- локально компилировать исходный код для личного тестирования, отладки, исследования совместимости и разработки;
+- вносить приватные изменения;
+- отправлять патчи, pull request'ы, bug report'ы и другие вклады в официальный проект;
+- использовать официальные файлы, размещённые на Modrinth, через поддерживаемые Modrinth механизмы зависимостей или modpack'ов там, где это допускают правила платформы Modrinth.
+
+3. Разрешение для модерации, проверки и безопасности
+Операторы, сотрудники, подрядчики, а также уполномоченные модераторы или специалисты по безопасности платформ размещения и распространения программного обеспечения, включая GitHub и Modrinth, могут получать доступ к отправленным материалам проекта, изучать, воспроизводить, компилировать, выполнять их и хранить разумно необходимые копии исключительно в объёме, необходимом для модерации, проверки безопасности, анализа вредоносного ПО, обеспечения соблюдения правил или проверки перед публикацией.
+
+4. Ограничения
+Без предварительного письменного разрешения правообладателя вы не можете:
+- публично перераспространять или зеркалировать изменённые либо неизменённые копии исходного кода вне официальных каналов проекта;
+- публично распространять изменённые бинарные файлы или неофициальные сборки так, будто они являются официальными релизами;
+- продавать, сублицензировать, сдавать в аренду или иным образом коммерчески эксплуатировать программное обеспечение либо существенные его части;
+- проводить ребрендинг проекта, удалять или фальсифицировать уведомления об авторских правах либо представлять проект или существенные его части как собственную работу;
+- публиковать fork, предназначенный для замены, имитации или конкуренции с официальным проектом и использующий по существу ту же кодовую базу;
+- использовать название Legacy Shader Bridge, логотип или идентичность проекта таким образом, который без разрешения создаёт впечатление одобрения или официального статуса.
+
+5. Вклады
+Намеренно отправляя вклад в официальный проект Legacy Shader Bridge, вы подтверждаете, что имеете право его отправить, и предоставляете правообладателю бессрочное, всемирное, неисключительное и безвозмездное право использовать, изменять, воспроизводить, распространять, сублицензировать и перелицензировать этот вклад как часть Legacy Shader Bridge и связанных с ним официальных релизов проекта.
+
+6. Отсутствие патентной или товарной лицензии
+Никакие патентные права или права на товарные знаки не предоставляются, за исключением минимального объёма, необходимого для осуществления разрешений, прямо предоставленных настоящей лицензией.
+
+7. Отсутствие гарантий
+ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ ГАРАНТИЙ, ВКЛЮЧАЯ, ПОМИМО ПРОЧЕГО, ГАРАНТИИ КОММЕРЧЕСКОЙ ПРИГОДНОСТИ, ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЁННОЙ ЦЕЛИ, ОТСУТСТВИЯ НАРУШЕНИЯ ПРАВ ТРЕТЬИХ ЛИЦ ИЛИ БЕЗОШИБОЧНОЙ РАБОТЫ. В МАКСИМАЛЬНОЙ СТЕПЕНИ, ДОПУСТИМОЙ ЗАКОНОМ, ПРАВООБЛАДАТЕЛЬ НЕ НЕСЁТ ОТВЕТСТВЕННОСТИ ЗА УЩЕРБ, ВОЗНИКШИЙ В РЕЗУЛЬТАТЕ ИСПОЛЬЗОВАНИЯ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ.
+
+8. Прекращение действия разрешений
+Ваши разрешения по настоящей лицензии автоматически прекращаются, если вы существенно нарушаете её условия. Разрешения могут быть восстановлены только по письменному разрешению правообладателя либо после устранения нарушения, если правообладатель прямо признает такое устранение достаточным.
+
+9. Статус Source-Available
+Это лицензия с доступным исходным кодом (source-available), а не лицензия с открытым исходным кодом, одобренная OSI. Все права, прямо не предоставленные настоящей лицензией, сохраняются за правообладателем.</pre>
     <footer class="license-footer">
       <span>Copyright © 2026 Onelsey</span>
-      <nav><a href="./index.html">Home</a><a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth</a></nav>
+      <nav><a href="./index.html" data-i18n="license.home">Home</a><a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth</a></nav>
     </footer>
   </main>
+  <script src="./app.js" defer></script>
 </body>
 </html>

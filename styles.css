@@ -393,3 +393,11 @@ a.docs-topic-card:hover { transform: translateY(-2px); border-color: var(--line-
   .license-text { font-size: 12px; line-height: 1.72; }
   .license-footer { flex-direction: column; }
 }
+
+.license-topbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.license-authority { color: #747e90 !important; font-size: 11px !important; }
+.license-text[hidden] { display: none; }
+@media (max-width: 620px) {
+  .license-topbar { align-items: center; }
+  .license-topbar .language-switch { flex: 0 0 auto; }
+}
