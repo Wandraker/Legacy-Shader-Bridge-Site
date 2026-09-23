@@ -181,23 +181,6 @@ img { display: block; max-width: 100%; }
 .future-copy h2 { overflow-wrap: anywhere; }
 .future-copy h2 { max-width: 790px; margin: 22px 0 0; font-size: clamp(52px, 6.2vw, 98px); font-weight: 560; line-height: .92; letter-spacing: -.07em; }
 .future-copy > p:not(.eyebrow) { max-width: 700px; margin: 28px 0 0; color: #929baa; font-size: 14px; line-height: 1.75; overflow-wrap: break-word; }
-.future-orbit { position: relative; width: min(650px, 100%); max-width: 100%; aspect-ratio: 1; justify-self: end; }
-.orbit { position: absolute; inset: 9%; border: 1px solid rgba(255,255,255,.09); border-radius: 50%; }
-.orbit span { position: absolute; top: 50%; left: 50%; width: 7px; height: 7px; margin: -3px; border-radius: 50%; background: #8d70ff; box-shadow: 0 0 18px rgba(141,112,255,.8); }
-.orbit-a { animation: spin 18s linear infinite; }
-.orbit-b { inset: 21%; border-color: rgba(89,215,255,.12); animation: spinReverse 12s linear infinite; }
-.orbit-b span { background: #59d7ff; box-shadow: 0 0 18px rgba(89,215,255,.75); }
-.orbit-c { inset: 34%; border-color: rgba(255,255,255,.13); animation: spin 8s linear infinite; }
-.orbit-c span { background: #fff; box-shadow: 0 0 14px rgba(255,255,255,.55); }
-.orbit-core { position: absolute; inset: 40%; border-radius: 24%; overflow: hidden; box-shadow: 0 0 80px rgba(110,81,234,.22); }
-.orbit-core img { width: 100%; height: 100%; object-fit: cover; }
-.orbit-label { position: absolute; color: #697387; font: 700 8px/1 ui-monospace, monospace; letter-spacing: .12em; }
-.orbit-label-a { top: 12%; left: 8%; }
-.orbit-label-b { right: 5%; top: 52%; }
-.orbit-label-c { left: 18%; bottom: 13%; }
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes spinReverse { to { transform: rotate(-360deg); } }
-
 .final-section { padding: 64px 32px 110px; background: #07090d; }
 .final-panel { width: min(1500px,100%); margin: 0 auto; display: grid; grid-template-columns: auto 1fr auto; gap: 34px; align-items: center; padding: clamp(26px, 4vw, 54px); border: 1px solid var(--line-strong); border-radius: 26px; background: linear-gradient(120deg, rgba(255,255,255,.035), rgba(108,78,225,.04)); box-shadow: 0 35px 100px rgba(0,0,0,.28); }
 .final-logo { width: 92px; height: 92px; border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,.13); }
