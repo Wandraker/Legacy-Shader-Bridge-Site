@@ -1,18 +1,17 @@
 # Legacy Shader Bridge Site
 
-Official website for Legacy Shader Bridge.
+Official website for **Legacy Shader Bridge**.
 
-## Development
+The site is intentionally lightweight: static HTML, CSS and JavaScript with no runtime framework dependency.
 
-```bash
-npm ci
-npm run dev
-```
-
-Production build:
+## Local preview
 
 ```bash
-npm run build
+python -m http.server 8080
 ```
 
-The site is deployed with GitHub Pages from the `main` branch.
+Then open `http://localhost:8080`.
+
+## Deployment
+
+GitHub Pages deploys automatically from `main` through `.github/workflows/deploy-pages.yml`.
