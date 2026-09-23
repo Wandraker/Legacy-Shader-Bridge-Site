@@ -267,7 +267,7 @@ img { display: block; max-width: 100%; }
   .hero-meta { margin-top: 34px; gap: 14px 18px; }
   .section { padding: 90px 18px; }
   .section-head { margin-bottom: 46px; }
-  .section-head h2 { font-size: clamp(43px, 11vw, 70px); }
+  .section-head h2 { width: 100%; max-width: 100%; font-size: clamp(38px, 8.5vw, 60px); line-height: .98; letter-spacing: -.05em; text-wrap: balance; overflow-wrap: break-word; }
   .bridge-cards { grid-template-columns: 1fr; }
   .bridge-card { min-height: 330px; border-right: 0; border-bottom: 1px solid var(--line); }
   .bridge-card:last-child { border-bottom: 0; }
