@@ -1,17 +1,22 @@
-# Legacy Shader Bridge Site
+# Legacy Shader Bridge Website
 
-Official website for **Legacy Shader Bridge**.
+Official website and technical documentation for **Legacy Shader Bridge (LSB)**.
 
-The site is intentionally lightweight: static HTML, CSS and JavaScript with no runtime framework dependency.
+**Website:** https://wandraker.github.io/Legacy-Shader-Bridge-Site/  
+**Project:** https://modrinth.com/mod/legacy-shader-bridge
 
-## Local preview
+This repository contains the public website, documentation pages and website assets. It does **not** contain the Legacy Shader Bridge renderer source code.
 
-```bash
-python -m http.server 8080
-```
+## Copyright
 
-Then open `http://localhost:8080`.
+© 2026 Onelsey. All rights reserved.
 
-## Deployment
+The website source, original design, written documentation, diagrams, branding and original visual assets are not published as open-source material. Public access to this repository does not grant permission to copy, redistribute, mirror, rebrand, adapt or reuse substantial parts of the website in derivative projects.
 
-GitHub Pages deploys automatically from `main` through `.github/workflows/deploy-pages.yml`.
+Third-party materials, if any, remain subject to their own licenses and rights.
+
+See [LICENSE](LICENSE) for the terms that apply to this website repository.
+
+The Legacy Shader Bridge software itself uses a separate project license:
+
+https://wandraker.github.io/Legacy-Shader-Bridge-Site/license.html
