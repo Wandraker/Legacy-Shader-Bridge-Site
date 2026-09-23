@@ -88,7 +88,6 @@
           </div>
         </div>
       </div>
-      <div class="hero-meta"><span><i class="status-dot"></i> <b data-i18n="hero.alpha">Active alpha</b></span><span>CLIENT-SIDE</span><span>FABRIC</span><span>JAVA 25+</span></div>
     </section>
 
     <section class="section bridge-section" id="bridge">
@@ -98,9 +97,64 @@
           <p data-i18n="bridge.lead">LSB is not a shader pack and not an OpenGL wrapper. It rebuilds the semantics packs rely on — then feeds them into a renderer with explicit Vulkan-era ownership, state and ordering.</p>
         </header>
         <div class="bridge-cards">
-          <article class="bridge-card" data-reveal><div class="bridge-card-index">01</div><div class="bridge-card-graphic" aria-hidden="true"><span class="beam beam-a"></span><span class="beam beam-b"></span><span class="beam beam-c"></span></div><h3 data-i18n="bridge.card1.title">Semantics</h3><p data-i18n="bridge.card1.body">Frame state, render stages, sampler bindings, attachments and ordering are treated as contracts — not visual guesses.</p></article>
-          <article class="bridge-card" data-reveal><div class="bridge-card-index">02</div><div class="bridge-card-graphic" aria-hidden="true"><span class="beam beam-a"></span><span class="beam beam-b"></span><span class="beam beam-c"></span></div><h3 data-i18n="bridge.card2.title">Geometry</h3><p data-i18n="bridge.card2.body">Terrain and scene geometry are carried through explicit ownership and provenance instead of fabricated compatibility data.</p></article>
-          <article class="bridge-card" data-reveal><div class="bridge-card-index">03</div><div class="bridge-card-graphic" aria-hidden="true"><span class="beam beam-a"></span><span class="beam beam-b"></span><span class="beam beam-c"></span></div><h3 data-i18n="bridge.card3.title">Execution</h3><p data-i18n="bridge.card3.body">The target is real native execution on the modern renderer, with unsupported paths staying fail-closed until proven.</p></article>
+          <article class="bridge-card" data-reveal>
+            <div class="bridge-card-index">01</div>
+            <div class="bridge-card-graphic bridge-card-graphic--semantics" aria-hidden="true">
+              <svg viewBox="0 0 360 150" role="presentation">
+                <rect class="bridge-v-box bridge-v-box--source" x="10" y="50" width="82" height="42" rx="10"></rect>
+                <rect class="bridge-v-box bridge-v-box--core" x="139" y="35" width="82" height="72" rx="12"></rect>
+                <rect class="bridge-v-box bridge-v-box--target" x="268" y="50" width="82" height="42" rx="10"></rect>
+                <path class="bridge-v-line" d="M92 71 H139"></path>
+                <path class="bridge-v-line" d="M221 71 H268"></path>
+                <path class="bridge-v-arrow" d="M131 65 L139 71 L131 77"></path>
+                <path class="bridge-v-arrow" d="M260 65 L268 71 L260 77"></path>
+                <text class="bridge-v-label" x="51" y="75" text-anchor="middle" data-i18n="bridge.visual.legacy">LEGACY</text>
+                <text class="bridge-v-label bridge-v-label--strong" x="180" y="66" text-anchor="middle">LSB</text>
+                <text class="bridge-v-label" x="180" y="82" text-anchor="middle" data-i18n="bridge.visual.contract">CONTRACT</text>
+                <text class="bridge-v-label" x="309" y="75" text-anchor="middle">VULKAN</text>
+                <text class="bridge-v-caption" x="180" y="128" text-anchor="middle" data-i18n="bridge.visual.semanticCaption">state · bindings · targets · ordering</text>
+              </svg>
+            </div>
+            <h3 data-i18n="bridge.card1.title">Semantics</h3>
+            <p data-i18n="bridge.card1.body">LSB preserves what each stage expects: frame state, bindings, attachments and ordering become explicit renderer contracts.</p>
+          </article>
+          <article class="bridge-card" data-reveal>
+            <div class="bridge-card-index">02</div>
+            <div class="bridge-card-graphic bridge-card-graphic--geometry" aria-hidden="true">
+              <svg viewBox="0 0 360 150" role="presentation">
+                <path class="bridge-v-mesh" d="M38 96 L82 70 L126 96 L82 122 Z M82 70 V28 L126 54 V96 M38 96 V54 L82 28"></path>
+                <path class="bridge-v-mesh bridge-v-mesh--soft" d="M149 101 L188 79 L227 101 L188 123 Z M188 79 V45 L227 67 V101 M149 101 V67 L188 45"></path>
+                <path class="bridge-v-entity" d="M267 40 H326 V111 H267 Z M279 53 H314 V77 H279 Z M284 89 H309"></path>
+                <path class="bridge-v-line" d="M126 84 C160 64 204 64 267 75"></path>
+                <path class="bridge-v-arrow" d="M259 69 L267 75 L258 80"></path>
+                <text class="bridge-v-caption" x="83" y="143" text-anchor="middle" data-i18n="bridge.visual.terrain">terrain</text>
+                <text class="bridge-v-caption" x="188" y="143" text-anchor="middle" data-i18n="bridge.visual.scene">scene mesh</text>
+                <text class="bridge-v-caption" x="297" y="143" text-anchor="middle" data-i18n="bridge.visual.entity">entity</text>
+              </svg>
+            </div>
+            <h3 data-i18n="bridge.card2.title">Geometry</h3>
+            <p data-i18n="bridge.card2.body">Terrain, entities and other scene geometry are submitted as real renderer data with explicit ownership and provenance.</p>
+          </article>
+          <article class="bridge-card" data-reveal>
+            <div class="bridge-card-index">03</div>
+            <div class="bridge-card-graphic bridge-card-graphic--execution" aria-hidden="true">
+              <svg viewBox="0 0 360 150" role="presentation">
+                <rect class="bridge-v-pass bridge-v-pass--a" x="12" y="52" width="72" height="40" rx="9"></rect>
+                <rect class="bridge-v-pass bridge-v-pass--b" x="100" y="52" width="72" height="40" rx="9"></rect>
+                <rect class="bridge-v-pass bridge-v-pass--c" x="188" y="52" width="72" height="40" rx="9"></rect>
+                <rect class="bridge-v-pass bridge-v-pass--d" x="276" y="52" width="72" height="40" rx="9"></rect>
+                <path class="bridge-v-line" d="M84 72 H100 M172 72 H188 M260 72 H276"></path>
+                <path class="bridge-v-arrow" d="M92 66 L100 72 L92 78 M180 66 L188 72 L180 78 M268 66 L276 72 L268 78"></path>
+                <text class="bridge-v-label" x="48" y="76" text-anchor="middle">GBUFFER</text>
+                <text class="bridge-v-label" x="136" y="76" text-anchor="middle">DEFERRED</text>
+                <text class="bridge-v-label" x="224" y="76" text-anchor="middle">COMPOSITE</text>
+                <text class="bridge-v-label" x="312" y="76" text-anchor="middle">FINAL</text>
+                <text class="bridge-v-caption" x="180" y="126" text-anchor="middle" data-i18n="bridge.visual.executionCaption">translated passes → native GPU work</text>
+              </svg>
+            </div>
+            <h3 data-i18n="bridge.card3.title">Execution</h3>
+            <p data-i18n="bridge.card3.body">Reconstructed stages become actual Vulkan work. Unsupported paths remain closed instead of being replaced with fake success.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -116,7 +170,7 @@
           <div class="arch-merge" aria-hidden="true"><span></span><b>LSB</b><span></span></div>
           <div class="arch-node arch-node--native"><span>FRONTEND / NATIVE</span><strong data-i18n="arch.native.title">Native tomorrow</strong><p data-i18n="arch.native.body">A future LSB-native shader path can expose modern resources and scheduling without forcing everything through historical OpenGL-era assumptions.</p><div class="code-line">lsb/ → versioned API</div></div>
           <div class="arch-spine" aria-hidden="true"><span></span></div>
-          <div class="arch-renderer"><div><span>UNIFIED BACKEND</span><strong data-i18n="arch.renderer.title">Shared renderer</strong></div><p data-i18n="arch.renderer.body">Explicit targets, dependencies, ownership, synchronization, scene submission and native Vulkan execution live underneath both paths.</p><div class="renderer-tags"><span>scene</span><span>resources</span><span>passes</span><span>sync</span><span>Vulkan</span></div></div>
+          <div class="arch-renderer"><div><span>UNIFIED BACKEND</span><strong data-i18n="arch.renderer.title">Shared renderer</strong></div><p data-i18n="arch.renderer.body">Explicit targets, dependencies, ownership, synchronization, scene submission and native Vulkan execution live underneath both paths.</p></div>
         </div>
       </div>
     </section>
