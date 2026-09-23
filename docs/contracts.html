@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080a0f">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Legacy shader contract reconstruction in LSB.">
+  <link rel="icon" type="image/webp" href="../assets/lsb-icon.webp">
+  <link rel="stylesheet" href="../styles.css">
+  <title>LSB Docs — Contracts and semantics</title>
+</head>
+<body class="docs-page">
+  <main class="site" id="top">
+    <header class="header">
+      <a class="brand" href="../index.html" aria-label="Legacy Shader Bridge home">
+        <span class="brand-mark"><img src="../assets/lsb-icon.webp" alt=""></span>
+        <span class="brand-copy"><strong>LSB</strong><small>Legacy Shader Bridge</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="../index.html#bridge" data-i18n="nav.bridge">Bridge</a>
+        <a href="../index.html#architecture" data-i18n="nav.architecture">Architecture</a>
+        <a href="../index.html#status" data-i18n="nav.status">Status</a>
+        <a href="../index.html#future" data-i18n="nav.future">Future</a>
+        <a href="../docs.html" data-i18n="nav.docs">Docs</a>
+      </nav>
+      <div class="header-actions">
+        <div class="language-switch" aria-label="Language"><button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button></div>
+        <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </header>
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu-head">
+        <a class="brand" href="../index.html"><span class="brand-mark"><img src="../assets/lsb-icon.webp" alt=""></span><span class="brand-copy"><strong>LSB</strong><small>Legacy Shader Bridge</small></span></a>
+        <button class="menu-close" type="button" data-i18n="ui.close">Close</button>
+      </div>
+      <nav>
+        <a href="../index.html#bridge">01 / <span data-i18n="nav.bridge">Bridge</span></a>
+        <a href="../index.html#architecture">02 / <span data-i18n="nav.architecture">Architecture</span></a>
+        <a href="../index.html#status">03 / <span data-i18n="nav.status">Status</span></a>
+        <a href="../index.html#future">04 / <span data-i18n="nav.future">Future</span></a>
+        <a href="../docs.html">05 / <span data-i18n="nav.docs">Docs</span></a>
+      </nav>
+      <div class="mobile-menu-bottom">
+        <div class="language-switch" aria-label="Language"><button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button></div>
+        <a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">MODRINTH <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="docs-portal">
+      <aside class="docs-sidebar">
+    <a class="docs-sidebar-brand" href="../docs.html"><img src="../assets/lsb-icon.webp" alt=""><strong>LSB DOCS</strong></a>
+    <div class="docs-sidebar-group"><span><span class="lang-en">Start</span><span class="lang-ru">Начало</span></span><a href="../docs.html"><span class="lang-en">Overview</span><span class="lang-ru">Обзор</span></a><a href="../docs/start.html"><span class="lang-en">Getting started</span><span class="lang-ru">С чего начать</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Core architecture</span><span class="lang-ru">Архитектура</span></span><a href="../docs/renderer.html"><span class="lang-en">Renderer model</span><span class="lang-ru">Модель рендерера</span></a><a href="../docs/contracts.html" aria-current="page"><span class="lang-en">Contracts & semantics</span><span class="lang-ru">Контракты и семантика</span></a><a href="../docs/pipeline.html"><span class="lang-en">Execution pipeline</span><span class="lang-ru">Pipeline исполнения</span></a><a href="../docs/legacy.html"><span class="lang-en">Legacy frontend</span><span class="lang-ru">Legacy frontend</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Development</span><span class="lang-ru">Разработка</span></span><a href="../docs/diagnostics.html"><span class="lang-en">Diagnostics</span><span class="lang-ru">Диагностика</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Future</span><span class="lang-ru">Будущее</span></span><a href="../docs/native.html"><span class="lang-en">Native LSB (future)</span><span class="lang-ru">Native LSB (будущее)</span></a></div></aside>
+      <article class="docs-main">
+        <header class="docs-article-head" data-reveal>
+          <p class="eyebrow"><span class="lang-en">Core architecture</span><span class="lang-ru">Архитектура</span></p>
+          <h1><span class="lang-en">Compatibility means reconstructing the contract around a shader.</span><span class="lang-ru">Compatibility означает реконструкцию контракта вокруг shader-а.</span></h1>
+          <p><span class="lang-en">The source program alone is not enough. LSB must reproduce the shader-visible state, resources and ordering that make the program mean what the pack expects.</span><span class="lang-ru">Одного исходника программы недостаточно. LSB должен воспроизвести shader-visible state, ресурсы и ordering, благодаря которым программа означает то, чего ожидает pack.</span></p>
+        </header>
+        <div class="docs-prose">
+<section data-reveal>
+  <h2><span class="lang-en">A contract is more than shader compilation</span><span class="lang-ru">Контракт — это больше, чем компиляция shader-а</span></h2>
+  <p><span class="lang-en">Legacy packs assume a whole rendering environment around each program. The shader source is only one part of that environment. LSB therefore reconstructs the shader-visible contract around a stage: the inputs it sees, the resources it reads and writes, the state active while it runs, and the ordering relationship to other stages.</span><span class="lang-ru">Legacy pack предполагает целое rendering environment вокруг каждой программы. Исходник shader-а — только одна часть этого окружения. Поэтому LSB реконструирует shader-visible contract вокруг стадии: какие inputs она видит, какие ресурсы читает и пишет, какой state активен во время выполнения и как эта стадия упорядочена относительно остальных.</span></p>
+  <div class="docs-diagram" data-reveal><div class="docs-diagram-title"><span class="lang-en">From legacy expectation to renderer contract</span><span class="lang-ru">От legacy-ожиданий к renderer contract</span></div><svg viewBox="0 0 900 390" role="img" aria-label="Legacy contract reconstruction">
+  <rect class="dg-box" x="40" y="45" width="180" height="250" rx="16"></rect>
+  <text class="dg-strong" x="130" y="78" text-anchor="middle">Legacy expectations</text>
+  <text class="dg-small" x="130" y="116" text-anchor="middle">frame state</text>
+  <text class="dg-small" x="130" y="145" text-anchor="middle">render stage</text>
+  <text class="dg-small" x="130" y="174" text-anchor="middle">sampler bindings</text>
+  <text class="dg-small" x="130" y="203" text-anchor="middle">attachments</text>
+  <text class="dg-small" x="130" y="232" text-anchor="middle">ordering</text>
+  <text class="dg-small" x="130" y="261" text-anchor="middle">scene inputs</text>
+
+  <rect class="dg-box dg-box-accent" x="350" y="85" width="200" height="170" rx="16"></rect>
+  <text class="dg-strong" x="450" y="122" text-anchor="middle">Renderer contract</text>
+  <text class="dg-small" x="450" y="157" text-anchor="middle">explicit resources</text>
+  <text class="dg-small" x="450" y="184" text-anchor="middle">producer provenance</text>
+  <text class="dg-small" x="450" y="211" text-anchor="middle">required state</text>
+
+  <rect class="dg-box dg-box-cyan" x="680" y="65" width="180" height="90" rx="16"></rect>
+  <text class="dg-strong" x="770" y="102" text-anchor="middle">Validated</text>
+  <text class="dg-small" x="770" y="126" text-anchor="middle">submit native work</text>
+
+  <rect class="dg-box" x="680" y="220" width="180" height="90" rx="16"></rect>
+  <text class="dg-strong" x="770" y="257" text-anchor="middle">Not proven</text>
+  <text class="dg-small" x="770" y="281" text-anchor="middle">remain fail-closed</text>
+
+  <path class="dg-line-accent" d="M220 170 H350"></path><polygon class="dg-arrow" points="342,164 350,170 342,176"></polygon>
+  <path class="dg-line-accent" d="M550 145 C610 145 620 110 680 110"></path><polygon class="dg-arrow" points="672,104 680,110 672,116"></polygon>
+  <path class="dg-line" d="M550 205 C610 205 620 265 680 265"></path><polygon class="dg-arrow" points="672,259 680,265 672,271"></polygon>
+</svg><div class="docs-diagram-note"><span class="lang-en">A compiling shader can still be wrong if attachment contents, producer state or ordering are wrong.</span><span class="lang-ru">Компилирующийся shader всё ещё может быть неправильным, если неверны attachment contents, producer state или ordering.</span></div></div>
+</section>
+<section data-reveal>
+  <h2><span class="lang-en">What must be reconstructed</span><span class="lang-ru">Что нужно реконструировать</span></h2>
+  <ul>
+    <li><span class="lang-en">frame and camera-visible state expected by the shader;</span><span class="lang-ru">frame state и camera-visible state, ожидаемые shader-ом;</span></li>
+    <li><span class="lang-en">program/stage identity and when it is allowed to run;</span><span class="lang-ru">identity программы/стадии и когда ей разрешено выполняться;</span></li>
+    <li><span class="lang-en">sampler, texture and buffer bindings;</span><span class="lang-ru">sampler, texture и buffer bindings;</span></li>
+    <li><span class="lang-en">render-target formats, contents and active writers;</span><span class="lang-ru">форматы render targets, их содержимое и active writers;</span></li>
+    <li><span class="lang-en">ordering and dependencies between passes.</span><span class="lang-ru">ordering и зависимости между pass'ами.</span></li>
+  </ul>
+</section>
+<section data-reveal>
+  <h2><span class="lang-en">Producer provenance</span><span class="lang-ru">Producer provenance</span></h2>
+  <p><span class="lang-en">A consumer should not receive producer credit for data that was never produced correctly. This is why LSB tracks attachment ownership and producer completeness rather than filling missing inputs with neutral-looking placeholders and calling the stage compatible.</span><span class="lang-ru">Consumer не должен получать producer credit за данные, которые на самом деле не были корректно произведены. Поэтому LSB отслеживает attachment ownership и producer completeness вместо заполнения отсутствующих inputs нейтральными заглушками с последующим объявлением стадии совместимой.</span></p>
+</section></div>
+        <nav class="docs-pager" aria-label="Documentation pagination"><a href="renderer.html"><span><span class="lang-en">Previous</span><span class="lang-ru">Назад</span></span><strong><span class="lang-en">Renderer model</span><span class="lang-ru">Модель рендерера</span></strong></a><a class="docs-pager-next" href="pipeline.html"><span><span class="lang-en">Next</span><span class="lang-ru">Дальше</span></span><strong><span class="lang-en">Execution pipeline</span><span class="lang-ru">Pipeline исполнения</span></strong></a></nav>
+        <footer class="docs-portal-footer"><span>Legacy Shader Bridge · by Onelsey</span><span><a href="../license.html">License</a> · <a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth →</a></span></footer>
+      </article>
+    </div>
+  </main>
+  <script src="../app.js" defer></script>
+</body>
+</html>

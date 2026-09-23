@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080a0f">
   <meta name="color-scheme" content="dark">
-  <meta name="description" content="Legacy Shader Bridge renderer model.">
+  <meta name="description" content="Legacy Shader Bridge renderer ownership model.">
   <link rel="icon" type="image/webp" href="../assets/lsb-icon.webp">
   <link rel="stylesheet" href="../styles.css">
   <title>LSB Docs — Renderer model</title>
@@ -25,9 +25,7 @@
         <a href="../docs.html" data-i18n="nav.docs">Docs</a>
       </nav>
       <div class="header-actions">
-        <div class="language-switch" aria-label="Language">
-          <button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button>
-        </div>
+        <div class="language-switch" aria-label="Language"><button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button></div>
         <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span></button>
       </div>
     </header>
@@ -51,37 +49,56 @@
     <div class="docs-portal">
       <aside class="docs-sidebar">
     <a class="docs-sidebar-brand" href="../docs.html"><img src="../assets/lsb-icon.webp" alt=""><strong>LSB DOCS</strong></a>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.start">Start here</span>
-      <a href="../docs.html"><span data-i18n="docs.nav.home">home</span></a>
-      <a href="../docs/start.html"><span data-i18n="docs.nav.start">start</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.concepts">Concepts</span>
-      <a href="../docs/renderer.html" aria-current="page"><span data-i18n="docs.nav.renderer">renderer</span></a>
-      <a href="../docs/legacy.html"><span data-i18n="docs.nav.legacy">legacy</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.development">Development</span>
-      <a href="../docs/diagnostics.html"><span data-i18n="docs.nav.diagnostics">diagnostics</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.future">Future</span>
-      <a href="../docs/native.html"><span data-i18n="docs.nav.native">native</span><em>PLANNED</em></a>
-    </div>
-  </aside>
+    <div class="docs-sidebar-group"><span><span class="lang-en">Start</span><span class="lang-ru">Начало</span></span><a href="../docs.html"><span class="lang-en">Overview</span><span class="lang-ru">Обзор</span></a><a href="../docs/start.html"><span class="lang-en">Getting started</span><span class="lang-ru">С чего начать</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Core architecture</span><span class="lang-ru">Архитектура</span></span><a href="../docs/renderer.html" aria-current="page"><span class="lang-en">Renderer model</span><span class="lang-ru">Модель рендерера</span></a><a href="../docs/contracts.html"><span class="lang-en">Contracts & semantics</span><span class="lang-ru">Контракты и семантика</span></a><a href="../docs/pipeline.html"><span class="lang-en">Execution pipeline</span><span class="lang-ru">Pipeline исполнения</span></a><a href="../docs/legacy.html"><span class="lang-en">Legacy frontend</span><span class="lang-ru">Legacy frontend</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Development</span><span class="lang-ru">Разработка</span></span><a href="../docs/diagnostics.html"><span class="lang-en">Diagnostics</span><span class="lang-ru">Диагностика</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Future</span><span class="lang-ru">Будущее</span></span><a href="../docs/native.html"><span class="lang-en">Native LSB (future)</span><span class="lang-ru">Native LSB (будущее)</span></a></div></aside>
       <article class="docs-main">
         <header class="docs-article-head" data-reveal>
-          <p class="eyebrow" data-i18n="docs.article.renderer.kicker"></p>
-          <h1 data-i18n="docs.article.renderer.title"></h1>
-          <p data-i18n="docs.article.renderer.lead"></p>
+          <p class="eyebrow"><span class="lang-en">Core architecture</span><span class="lang-ru">Архитектура</span></p>
+          <h1><span class="lang-en">Frontends translate intent. The renderer owns execution.</span><span class="lang-ru">Frontend переводит intent. Renderer владеет исполнением.</span></h1>
+          <p><span class="lang-en">The shared renderer is the long-lived part of LSB. Compatibility logic and future native APIs should sit above it without becoming its implementation.</span><span class="lang-ru">Общий renderer — долгоживущая часть LSB. Compatibility-логика и будущие native API должны находиться над ним, не превращаясь в его реализацию.</span></p>
         </header>
         <div class="docs-prose">
-          <section data-reveal><h2 data-i18n="docs.article.renderer.core.title">Shared Vulkan core</h2><p data-i18n="docs.article.renderer.core.body">Shared renderer infrastructure.</p></section>
-<section data-reveal><h2 data-i18n="docs.article.renderer.frontends.title">Frontend boundary</h2><p data-i18n="docs.article.renderer.frontends.body">Different frontends, one renderer.</p></section>
-<section data-reveal><h2 data-i18n="docs.article.renderer.independence.title">Renderer independence</h2><p data-i18n="docs.article.renderer.independence.body">Adapters stay adapters.</p></section>
-        </div>
-        <nav class="docs-pager" aria-label="Documentation pagination">
-    <a href="start.html"><span data-i18n="docs.pager.previous">Previous</span><strong data-i18n="docs.nav.start">Getting started</strong></a>
-    <a class="docs-pager-next" href="legacy.html"><span data-i18n="docs.pager.next">Next</span><strong data-i18n="docs.nav.legacy">Legacy frontend</strong></a>
-  </nav>
-        <footer class="docs-portal-footer"><span>Legacy Shader Bridge · by Onelsey</span><a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth →</a></footer>
+<section data-reveal>
+  <h2><span class="lang-en">Ownership boundary</span><span class="lang-ru">Граница ownership</span></h2>
+  <p><span class="lang-en">The most important architectural boundary is that frontends describe or reconstruct rendering intent, while the shared renderer owns execution. This prevents the legacy frontend from becoming the renderer itself and keeps the future native path from inheriting temporary compatibility internals.</span><span class="lang-ru">Главная архитектурная граница: frontend описывает или реконструирует rendering intent, а общий renderer владеет исполнением. Это не даёт legacy frontend превратиться в сам renderer и не заставляет будущий native path наследовать временные compatibility-внутренности.</span></p>
+  <div class="docs-diagram" data-reveal><div class="docs-diagram-title"><span class="lang-en">Renderer layers</span><span class="lang-ru">Слои renderer-а</span></div><svg viewBox="0 0 900 430" role="img" aria-label="Renderer ownership layers">
+  <rect class="dg-box" x="55" y="35" width="320" height="72" rx="14"></rect>
+  <text class="dg-strong" x="215" y="68" text-anchor="middle">Legacy compatibility frontend</text>
+  <text class="dg-small" x="215" y="88" text-anchor="middle">legacy semantics → renderer contracts</text>
+
+  <rect class="dg-box" x="525" y="35" width="320" height="72" rx="14"></rect>
+  <text class="dg-strong" x="685" y="68" text-anchor="middle">Future native frontend</text>
+  <text class="dg-small" x="685" y="88" text-anchor="middle">direct renderer-facing API</text>
+
+  <rect class="dg-box dg-box-accent" x="180" y="165" width="540" height="150" rx="18"></rect>
+  <text class="dg-strong" x="450" y="198" text-anchor="middle">Shared LSB renderer core</text>
+  <text class="dg-small" x="450" y="225" text-anchor="middle">scene submission · resource ownership · pass graph</text>
+  <text class="dg-small" x="450" y="247" text-anchor="middle">attachments · synchronization · lifetime · validation</text>
+  <text class="dg-small" x="450" y="269" text-anchor="middle">renderer-neutral geometry identity · topology · fixed function state</text>
+
+  <path class="dg-line-accent" d="M215 107 V165"></path><polygon class="dg-arrow" points="209,157 215,165 221,157"></polygon>
+  <path class="dg-line" d="M685 107 V165"></path><polygon class="dg-arrow" points="679,157 685,165 691,157"></polygon>
+
+  <rect class="dg-box dg-box-cyan" x="285" y="360" width="330" height="58" rx="14"></rect>
+  <text class="dg-strong" x="450" y="394" text-anchor="middle">Native Vulkan backend</text>
+  <path class="dg-line-accent" d="M450 315 V360"></path><polygon class="dg-arrow" points="444,352 450,360 456,352"></polygon>
+</svg><div class="docs-diagram-note"><span class="lang-en">Both frontends should converge on renderer-level concepts instead of exposing backend-specific or compatibility-specific implementation details.</span><span class="lang-ru">Оба frontend должны сходиться на renderer-level концептах, а не раскрывать backend-specific или compatibility-specific детали реализации.</span></div></div>
+</section>
+<section data-reveal>
+  <h2><span class="lang-en">What the renderer owns</span><span class="lang-ru">Чем владеет renderer</span></h2>
+  <ul>
+    <li><span class="lang-en">scene submission and geometry identity;</span><span class="lang-ru">scene submission и identity геометрии;</span></li>
+    <li><span class="lang-en">render targets, attachment lifetime and producer ownership;</span><span class="lang-ru">render targets, lifetime attachments и producer ownership;</span></li>
+    <li><span class="lang-en">pass ordering, dependencies and synchronization;</span><span class="lang-ru">ordering pass'ов, зависимости и synchronization;</span></li>
+    <li><span class="lang-en">explicit raster, depth, blend and topology state;</span><span class="lang-ru">явные raster, depth, blend и topology state;</span></li>
+    <li><span class="lang-en">native Vulkan command submission and GPU execution.</span><span class="lang-ru">нативный Vulkan command submission и GPU execution.</span></li>
+  </ul>
+</section>
+<section data-reveal>
+  <h2><span class="lang-en">Renderer independence</span><span class="lang-ru">Независимость renderer-а</span></h2>
+  <p><span class="lang-en">Renderer integrations remain adapters. Sodium can be used where useful for lifecycle or acceleration, but LSB core is designed around renderer-neutral identities and ownership rules rather than Sodium classes or visibility being the source of truth.</span><span class="lang-ru">Интеграции с другими renderer остаются адаптерами. Sodium может использоваться там, где полезен для lifecycle или acceleration, но LSB core строится вокруг renderer-neutral identity и ownership rules, а не вокруг Sodium-классов или его visibility как источника истины.</span></p>
+</section></div>
+        <nav class="docs-pager" aria-label="Documentation pagination"><a href="start.html"><span><span class="lang-en">Previous</span><span class="lang-ru">Назад</span></span><strong><span class="lang-en">Getting started</span><span class="lang-ru">С чего начать</span></strong></a><a class="docs-pager-next" href="contracts.html"><span><span class="lang-en">Next</span><span class="lang-ru">Дальше</span></span><strong><span class="lang-en">Contracts & semantics</span><span class="lang-ru">Контракты и семантика</span></strong></a></nav>
+        <footer class="docs-portal-footer"><span>Legacy Shader Bridge · by Onelsey</span><span><a href="../license.html">License</a> · <a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth →</a></span></footer>
       </article>
     </div>
   </main>

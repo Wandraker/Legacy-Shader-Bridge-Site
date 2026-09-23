@@ -25,9 +25,7 @@
         <a href="../docs.html" data-i18n="nav.docs">Docs</a>
       </nav>
       <div class="header-actions">
-        <div class="language-switch" aria-label="Language">
-          <button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button>
-        </div>
+        <div class="language-switch" aria-label="Language"><button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button></div>
         <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span></button>
       </div>
     </header>
@@ -51,37 +49,49 @@
     <div class="docs-portal">
       <aside class="docs-sidebar">
     <a class="docs-sidebar-brand" href="../docs.html"><img src="../assets/lsb-icon.webp" alt=""><strong>LSB DOCS</strong></a>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.start">Start here</span>
-      <a href="../docs.html"><span data-i18n="docs.nav.home">home</span></a>
-      <a href="../docs/start.html"><span data-i18n="docs.nav.start">start</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.concepts">Concepts</span>
-      <a href="../docs/renderer.html"><span data-i18n="docs.nav.renderer">renderer</span></a>
-      <a href="../docs/legacy.html"><span data-i18n="docs.nav.legacy">legacy</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.development">Development</span>
-      <a href="../docs/diagnostics.html"><span data-i18n="docs.nav.diagnostics">diagnostics</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.future">Future</span>
-      <a href="../docs/native.html" aria-current="page"><span data-i18n="docs.nav.native">native</span><em>PLANNED</em></a>
-    </div>
-  </aside>
+    <div class="docs-sidebar-group"><span><span class="lang-en">Start</span><span class="lang-ru">Начало</span></span><a href="../docs.html"><span class="lang-en">Overview</span><span class="lang-ru">Обзор</span></a><a href="../docs/start.html"><span class="lang-en">Getting started</span><span class="lang-ru">С чего начать</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Core architecture</span><span class="lang-ru">Архитектура</span></span><a href="../docs/renderer.html"><span class="lang-en">Renderer model</span><span class="lang-ru">Модель рендерера</span></a><a href="../docs/contracts.html"><span class="lang-en">Contracts & semantics</span><span class="lang-ru">Контракты и семантика</span></a><a href="../docs/pipeline.html"><span class="lang-en">Execution pipeline</span><span class="lang-ru">Pipeline исполнения</span></a><a href="../docs/legacy.html"><span class="lang-en">Legacy frontend</span><span class="lang-ru">Legacy frontend</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Development</span><span class="lang-ru">Разработка</span></span><a href="../docs/diagnostics.html"><span class="lang-en">Diagnostics</span><span class="lang-ru">Диагностика</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Future</span><span class="lang-ru">Будущее</span></span><a href="../docs/native.html" aria-current="page"><span class="lang-en">Native LSB (future)</span><span class="lang-ru">Native LSB (будущее)</span></a></div></aside>
       <article class="docs-main">
         <header class="docs-article-head" data-reveal>
-          <p class="eyebrow" data-i18n="docs.article.native.kicker"></p>
-          <h1 data-i18n="docs.article.native.title"></h1>
-          <p data-i18n="docs.article.native.lead"></p>
+          <p class="eyebrow"><span class="lang-en">Future direction</span><span class="lang-ru">Будущее направление</span></p>
+          <h1><span class="lang-en">Native LSB should expose the renderer without legacy-era constraints.</span><span class="lang-ru">Native LSB должен открывать renderer без legacy-era ограничений.</span></h1>
+          <p><span class="lang-en">The native shader API does not exist yet. This page documents only the architectural direction that is stable enough to say now.</span><span class="lang-ru">Нативного shader API пока не существует. Эта страница фиксирует только то архитектурное направление, которое уже достаточно устойчиво, чтобы его описывать.</span></p>
         </header>
         <div class="docs-prose">
-          <section data-reveal><h2 data-i18n="docs.article.native.goal.title">Goal</h2><p data-i18n="docs.article.native.goal.body">Target the renderer directly.</p></section>
-<section data-reveal><h2 data-i18n="docs.article.native.foundation.title">Same renderer foundation</h2><p data-i18n="docs.article.native.foundation.body">Legacy and native share infrastructure.</p></section>
-<section data-reveal><h2 data-i18n="docs.article.native.freeze.title">What is deliberately not frozen</h2><p data-i18n="docs.article.native.freeze.body">No premature public API contract.</p></section>
-        </div>
-        <nav class="docs-pager" aria-label="Documentation pagination">
-    <a href="diagnostics.html"><span data-i18n="docs.pager.previous">Previous</span><strong data-i18n="docs.nav.diagnostics">Diagnostics & reports</strong></a>
-    <a class="docs-pager-next" href="../docs.html"><span data-i18n="docs.pager.back">Back to docs</span><strong>LSB Docs</strong></a>
-  </nav>
-        <footer class="docs-portal-footer"><span>Legacy Shader Bridge · by Onelsey</span><a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth →</a></footer>
+<section data-reveal>
+  <h2><span class="lang-en">The next frontend, not a second renderer</span><span class="lang-ru">Следующий frontend, а не второй renderer</span></h2>
+  <p><span class="lang-en">The planned native API should sit above the same renderer core that the legacy frontend is forcing into shape today. The point is to expose renderer capabilities directly, not to duplicate scene submission, lifetime tracking or Vulkan execution in a separate system.</span><span class="lang-ru">Запланированный native API должен находиться над тем же renderer core, который сегодня формируется через legacy frontend. Смысл — напрямую открыть возможности renderer-а, а не дублировать scene submission, lifetime tracking или Vulkan execution во второй системе.</span></p>
+  <div class="docs-diagram" data-reveal><div class="docs-diagram-title"><span class="lang-en">Planned frontend relationship</span><span class="lang-ru">Запланированная связь frontend</span></div><svg viewBox="0 0 900 360" role="img" aria-label="Future native path">
+  <rect class="dg-box" x="55" y="55" width="245" height="80" rx="14"></rect>
+  <text class="dg-strong" x="177" y="88" text-anchor="middle">Legacy frontend</text>
+  <text class="dg-small" x="177" y="111" text-anchor="middle">compatibility translation</text>
+  <rect class="dg-box" x="55" y="225" width="245" height="80" rx="14"></rect>
+  <text class="dg-strong" x="177" y="258" text-anchor="middle">Native LSB frontend</text>
+  <text class="dg-small" x="177" y="281" text-anchor="middle">future direct API</text>
+  <rect class="dg-box dg-box-accent" x="475" y="115" width="320" height="130" rx="18"></rect>
+  <text class="dg-strong" x="635" y="154" text-anchor="middle">Shared renderer core</text>
+  <text class="dg-small" x="635" y="184" text-anchor="middle">targets · resources · passes · lifetime</text>
+  <text class="dg-small" x="635" y="208" text-anchor="middle">ownership · synchronization · Vulkan</text>
+  <path class="dg-line" d="M300 95 C390 95 390 150 475 160"></path>
+  <path class="dg-line-accent" d="M300 265 C390 265 390 220 475 210"></path>
+  <polygon class="dg-arrow" points="467,154 475,160 466,165"></polygon>
+  <polygon class="dg-arrow" points="466,204 475,210 467,216"></polygon>
+</svg><div class="docs-diagram-note"><span class="lang-en">The API surface is intentionally not shown because it does not exist yet.</span><span class="lang-ru">API surface намеренно не показан, потому что его пока не существует.</span></div></div>
+</section>
+<section data-reveal>
+  <h2><span class="lang-en">Direction that is already clear</span><span class="lang-ru">Что уже понятно о направлении</span></h2>
+  <ul>
+    <li><span class="lang-en">explicit render targets and formats where useful;</span><span class="lang-ru">явные render targets и formats там, где это полезно;</span></li>
+    <li><span class="lang-en">explicit pass dependencies and resource ownership;</span><span class="lang-ru">явные зависимости pass'ов и resource ownership;</span></li>
+    <li><span class="lang-en">compute workloads, storage resources and temporal lifetimes without legacy naming tricks;</span><span class="lang-ru">compute workloads, storage resources и temporal lifetime без legacy naming tricks;</span></li>
+    <li><span class="lang-en">a versioned public contract instead of exposing accidental internal implementation details.</span><span class="lang-ru">versioned public contract вместо раскрытия случайных внутренних implementation details.</span></li>
+  </ul>
+</section>
+<section data-reveal>
+  <h2><span class="lang-en">What is deliberately not frozen</span><span class="lang-ru">Что намеренно не фиксируется</span></h2>
+  <p><span class="lang-en">File layout, shader syntax, resource declaration syntax and scheduling syntax remain undecided. Freezing them before the renderer fundamentals are stable would turn today's temporary implementation into tomorrow's compatibility burden.</span><span class="lang-ru">File layout, shader syntax, syntax resource declarations и scheduling syntax остаются нерешёнными. Если зафиксировать их до стабилизации renderer fundamentals, сегодняшняя временная реализация станет завтрашним compatibility-бременем.</span></p>
+</section></div>
+        <nav class="docs-pager" aria-label="Documentation pagination"><a href="diagnostics.html"><span><span class="lang-en">Previous</span><span class="lang-ru">Назад</span></span><strong><span class="lang-en">Diagnostics</span><span class="lang-ru">Диагностика</span></strong></a><a class="docs-pager-next" href="../docs.html"><span><span class="lang-en">Back to docs</span><span class="lang-ru">К документации</span></span><strong>LSB Docs</strong></a></nav>
+        <footer class="docs-portal-footer"><span>Legacy Shader Bridge · by Onelsey</span><span><a href="../license.html">License</a> · <a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth →</a></span></footer>
       </article>
     </div>
   </main>

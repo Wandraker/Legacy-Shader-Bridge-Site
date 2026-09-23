@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080a0f">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Legacy Shader Bridge execution and resource flow.">
+  <link rel="icon" type="image/webp" href="../assets/lsb-icon.webp">
+  <link rel="stylesheet" href="../styles.css">
+  <title>LSB Docs — Execution pipeline</title>
+</head>
+<body class="docs-page">
+  <main class="site" id="top">
+    <header class="header">
+      <a class="brand" href="../index.html" aria-label="Legacy Shader Bridge home">
+        <span class="brand-mark"><img src="../assets/lsb-icon.webp" alt=""></span>
+        <span class="brand-copy"><strong>LSB</strong><small>Legacy Shader Bridge</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="../index.html#bridge" data-i18n="nav.bridge">Bridge</a>
+        <a href="../index.html#architecture" data-i18n="nav.architecture">Architecture</a>
+        <a href="../index.html#status" data-i18n="nav.status">Status</a>
+        <a href="../index.html#future" data-i18n="nav.future">Future</a>
+        <a href="../docs.html" data-i18n="nav.docs">Docs</a>
+      </nav>
+      <div class="header-actions">
+        <div class="language-switch" aria-label="Language"><button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button></div>
+        <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </header>
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu-head">
+        <a class="brand" href="../index.html"><span class="brand-mark"><img src="../assets/lsb-icon.webp" alt=""></span><span class="brand-copy"><strong>LSB</strong><small>Legacy Shader Bridge</small></span></a>
+        <button class="menu-close" type="button" data-i18n="ui.close">Close</button>
+      </div>
+      <nav>
+        <a href="../index.html#bridge">01 / <span data-i18n="nav.bridge">Bridge</span></a>
+        <a href="../index.html#architecture">02 / <span data-i18n="nav.architecture">Architecture</span></a>
+        <a href="../index.html#status">03 / <span data-i18n="nav.status">Status</span></a>
+        <a href="../index.html#future">04 / <span data-i18n="nav.future">Future</span></a>
+        <a href="../docs.html">05 / <span data-i18n="nav.docs">Docs</span></a>
+      </nav>
+      <div class="mobile-menu-bottom">
+        <div class="language-switch" aria-label="Language"><button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button></div>
+        <a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">MODRINTH <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="docs-portal">
+      <aside class="docs-sidebar">
+    <a class="docs-sidebar-brand" href="../docs.html"><img src="../assets/lsb-icon.webp" alt=""><strong>LSB DOCS</strong></a>
+    <div class="docs-sidebar-group"><span><span class="lang-en">Start</span><span class="lang-ru">Начало</span></span><a href="../docs.html"><span class="lang-en">Overview</span><span class="lang-ru">Обзор</span></a><a href="../docs/start.html"><span class="lang-en">Getting started</span><span class="lang-ru">С чего начать</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Core architecture</span><span class="lang-ru">Архитектура</span></span><a href="../docs/renderer.html"><span class="lang-en">Renderer model</span><span class="lang-ru">Модель рендерера</span></a><a href="../docs/contracts.html"><span class="lang-en">Contracts & semantics</span><span class="lang-ru">Контракты и семантика</span></a><a href="../docs/pipeline.html" aria-current="page"><span class="lang-en">Execution pipeline</span><span class="lang-ru">Pipeline исполнения</span></a><a href="../docs/legacy.html"><span class="lang-en">Legacy frontend</span><span class="lang-ru">Legacy frontend</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Development</span><span class="lang-ru">Разработка</span></span><a href="../docs/diagnostics.html"><span class="lang-en">Diagnostics</span><span class="lang-ru">Диагностика</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Future</span><span class="lang-ru">Будущее</span></span><a href="../docs/native.html"><span class="lang-en">Native LSB (future)</span><span class="lang-ru">Native LSB (будущее)</span></a></div></aside>
+      <article class="docs-main">
+        <header class="docs-article-head" data-reveal>
+          <p class="eyebrow"><span class="lang-en">Core architecture</span><span class="lang-ru">Архитектура</span></p>
+          <h1><span class="lang-en">Passes only make sense together with their resources and dependencies.</span><span class="lang-ru">Pass'ы имеют смысл только вместе с ресурсами и зависимостями.</span></h1>
+          <p><span class="lang-en">LSB converts a pack-defined multi-stage pipeline into ordered native work while preserving the data relationships between scene submission, attachments and later consumers.</span><span class="lang-ru">LSB превращает pack-defined multi-stage pipeline в упорядоченную нативную работу, сохраняя связи данных между scene submission, attachments и поздними consumer-ами.</span></p>
+        </header>
+        <div class="docs-prose">
+<section data-reveal>
+  <h2><span class="lang-en">Execution is ordered work, not a list of shaders</span><span class="lang-ru">Execution — это упорядоченная работа, а не список shader-ов</span></h2>
+  <p><span class="lang-en">A real shader-pack pipeline is a dependency chain. Earlier stages produce attachments or temporal state that later stages consume. LSB has to preserve that relationship while translating it into explicit Vulkan resource ownership and synchronization.</span><span class="lang-ru">Реальный shader-pack pipeline — это цепочка зависимостей. Ранние стадии производят attachments или temporal state, которые потребляют поздние стадии. LSB должен сохранить эту связь, переводя её в явный Vulkan resource ownership и synchronization.</span></p>
+  <div class="docs-diagram" data-reveal><div class="docs-diagram-title"><span class="lang-en">Simplified legacy-style execution flow</span><span class="lang-ru">Упрощённый legacy-style execution flow</span></div><svg viewBox="0 0 1000 430" role="img" aria-label="Execution pipeline">
+  <rect class="dg-box" x="28" y="58" width="160" height="68" rx="14"></rect>
+  <text class="dg-strong" x="108" y="87" text-anchor="middle">Scene submission</text>
+  <text class="dg-small" x="108" y="107" text-anchor="middle">terrain · entities · hand</text>
+
+  <rect class="dg-box dg-box-accent" x="250" y="58" width="150" height="68" rx="14"></rect>
+  <text class="dg-strong" x="325" y="87" text-anchor="middle">GBUFFER</text>
+  <text class="dg-small" x="325" y="107" text-anchor="middle">write attachments</text>
+
+  <rect class="dg-box" x="470" y="58" width="150" height="68" rx="14"></rect>
+  <text class="dg-strong" x="545" y="87" text-anchor="middle">DEFERRED</text>
+  <text class="dg-small" x="545" y="107" text-anchor="middle">consume + produce</text>
+
+  <rect class="dg-box" x="690" y="58" width="150" height="68" rx="14"></rect>
+  <text class="dg-strong" x="765" y="87" text-anchor="middle">COMPOSITE</text>
+  <text class="dg-small" x="765" y="107" text-anchor="middle">post / temporal work</text>
+
+  <rect class="dg-box dg-box-cyan" x="870" y="58" width="105" height="68" rx="14"></rect>
+  <text class="dg-strong" x="922" y="87" text-anchor="middle">FINAL</text>
+  <text class="dg-small" x="922" y="107" text-anchor="middle">present</text>
+
+  <path class="dg-line-accent" d="M188 92 H250 M400 92 H470 M620 92 H690 M840 92 H870"></path>
+  <polygon class="dg-arrow" points="242,86 250,92 242,98"></polygon>
+  <polygon class="dg-arrow" points="462,86 470,92 462,98"></polygon>
+  <polygon class="dg-arrow" points="682,86 690,92 682,98"></polygon>
+  <polygon class="dg-arrow" points="862,86 870,92 862,98"></polygon>
+
+  <rect class="dg-box" x="250" y="220" width="150" height="86" rx="14"></rect>
+  <text class="dg-strong" x="325" y="252" text-anchor="middle">Attachments</text>
+  <text class="dg-small" x="325" y="275" text-anchor="middle">color · depth · history</text>
+
+  <rect class="dg-box" x="500" y="220" width="190" height="86" rx="14"></rect>
+  <text class="dg-strong" x="595" y="252" text-anchor="middle">Frame / temporal state</text>
+  <text class="dg-small" x="595" y="275" text-anchor="middle">current + previous frame</text>
+
+  <rect class="dg-box" x="770" y="220" width="180" height="86" rx="14"></rect>
+  <text class="dg-strong" x="860" y="252" text-anchor="middle">Synchronization</text>
+  <text class="dg-small" x="860" y="275" text-anchor="middle">dependencies · barriers</text>
+
+  <path class="dg-line" d="M325 126 V220"></path>
+  <path class="dg-line" d="M545 126 C545 170 595 170 595 220"></path>
+  <path class="dg-line" d="M765 126 C765 175 860 175 860 220"></path>
+</svg><div class="docs-diagram-note"><span class="lang-en">The exact stage set is pack-dependent. This diagram shows the dependency model, not a promise that every pack has exactly these four stages.</span><span class="lang-ru">Точный набор стадий зависит от pack-а. Схема показывает модель зависимостей, а не обещает, что каждый pack содержит ровно эти четыре стадии.</span></div></div>
+</section>
+<section data-reveal>
+  <h2><span class="lang-en">Scene work and post-processing are connected</span><span class="lang-ru">Scene work и post-processing связаны</span></h2>
+  <p><span class="lang-en">Terrain, entities, block entities, particles, hand rendering and translucent surfaces feed scene data into the pipeline. Later passes can only be correct if the geometry, depth and attachment producers before them were correct.</span><span class="lang-ru">Terrain, entities, block entities, particles, hand rendering и translucent surfaces подают данные сцены в pipeline. Поздние pass'ы могут быть корректны только если геометрия, depth и producers attachments до них были корректны.</span></p>
+</section>
+<section data-reveal>
+  <h2><span class="lang-en">Temporal resources have lifetime</span><span class="lang-ru">Temporal resources имеют lifetime</span></h2>
+  <p><span class="lang-en">History buffers and previous-frame state are not ordinary scratch data. Their identity and lifetime cross frame boundaries, so LSB treats them as explicit renderer resources rather than accidental leftovers from the previous frame.</span><span class="lang-ru">History buffers и previous-frame state — не обычные временные данные. Их identity и lifetime пересекают границы кадров, поэтому LSB рассматривает их как явные renderer resources, а не случайные остатки прошлого frame.</span></p>
+</section></div>
+        <nav class="docs-pager" aria-label="Documentation pagination"><a href="contracts.html"><span><span class="lang-en">Previous</span><span class="lang-ru">Назад</span></span><strong><span class="lang-en">Contracts & semantics</span><span class="lang-ru">Контракты и семантика</span></strong></a><a class="docs-pager-next" href="legacy.html"><span><span class="lang-en">Next</span><span class="lang-ru">Дальше</span></span><strong><span class="lang-en">Legacy frontend</span><span class="lang-ru">Legacy frontend</span></strong></a></nav>
+        <footer class="docs-portal-footer"><span>Legacy Shader Bridge · by Onelsey</span><span><a href="../license.html">License</a> · <a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth →</a></span></footer>
+      </article>
+    </div>
+  </main>
+  <script src="../app.js" defer></script>
+</body>
+</html>

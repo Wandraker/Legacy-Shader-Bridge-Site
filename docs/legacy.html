@@ -25,9 +25,7 @@
         <a href="../docs.html" data-i18n="nav.docs">Docs</a>
       </nav>
       <div class="header-actions">
-        <div class="language-switch" aria-label="Language">
-          <button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button>
-        </div>
+        <div class="language-switch" aria-label="Language"><button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button></div>
         <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span></button>
       </div>
     </header>
@@ -51,37 +49,28 @@
     <div class="docs-portal">
       <aside class="docs-sidebar">
     <a class="docs-sidebar-brand" href="../docs.html"><img src="../assets/lsb-icon.webp" alt=""><strong>LSB DOCS</strong></a>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.start">Start here</span>
-      <a href="../docs.html"><span data-i18n="docs.nav.home">home</span></a>
-      <a href="../docs/start.html"><span data-i18n="docs.nav.start">start</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.concepts">Concepts</span>
-      <a href="../docs/renderer.html"><span data-i18n="docs.nav.renderer">renderer</span></a>
-      <a href="../docs/legacy.html" aria-current="page"><span data-i18n="docs.nav.legacy">legacy</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.development">Development</span>
-      <a href="../docs/diagnostics.html"><span data-i18n="docs.nav.diagnostics">diagnostics</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.future">Future</span>
-      <a href="../docs/native.html"><span data-i18n="docs.nav.native">native</span><em>PLANNED</em></a>
-    </div>
-  </aside>
+    <div class="docs-sidebar-group"><span><span class="lang-en">Start</span><span class="lang-ru">Начало</span></span><a href="../docs.html"><span class="lang-en">Overview</span><span class="lang-ru">Обзор</span></a><a href="../docs/start.html"><span class="lang-en">Getting started</span><span class="lang-ru">С чего начать</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Core architecture</span><span class="lang-ru">Архитектура</span></span><a href="../docs/renderer.html"><span class="lang-en">Renderer model</span><span class="lang-ru">Модель рендерера</span></a><a href="../docs/contracts.html"><span class="lang-en">Contracts & semantics</span><span class="lang-ru">Контракты и семантика</span></a><a href="../docs/pipeline.html"><span class="lang-en">Execution pipeline</span><span class="lang-ru">Pipeline исполнения</span></a><a href="../docs/legacy.html" aria-current="page"><span class="lang-en">Legacy frontend</span><span class="lang-ru">Legacy frontend</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Development</span><span class="lang-ru">Разработка</span></span><a href="../docs/diagnostics.html"><span class="lang-en">Diagnostics</span><span class="lang-ru">Диагностика</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Future</span><span class="lang-ru">Будущее</span></span><a href="../docs/native.html"><span class="lang-en">Native LSB (future)</span><span class="lang-ru">Native LSB (будущее)</span></a></div></aside>
       <article class="docs-main">
         <header class="docs-article-head" data-reveal>
-          <p class="eyebrow" data-i18n="docs.article.legacy.kicker"></p>
-          <h1 data-i18n="docs.article.legacy.title"></h1>
-          <p data-i18n="docs.article.legacy.lead"></p>
+          <p class="eyebrow"><span class="lang-en">Compatibility</span><span class="lang-ru">Совместимость</span></p>
+          <h1><span class="lang-en">Legacy is the first frontend, not the ceiling of the renderer.</span><span class="lang-ru">Legacy — первый frontend, а не потолок renderer-а.</span></h1>
+          <p><span class="lang-en">The compatibility frontend exists to make real existing shader packs work truthfully on the renderer. It is a translation and validation layer, not the final public API.</span><span class="lang-ru">Compatibility frontend нужен, чтобы реальные существующие shader pack'и честно работали на renderer-е. Это слой перевода и проверки, а не конечный публичный API.</span></p>
         </header>
         <div class="docs-prose">
-          <section data-reveal><h2 data-i18n="docs.article.legacy.contract.title">Compatibility contract</h2><p data-i18n="docs.article.legacy.contract.body">Reconstruct the contract, not just compilation.</p></section>
-<section data-reveal><h2 data-i18n="docs.article.legacy.fail.title">Fail closed</h2><p data-i18n="docs.article.legacy.fail.body">Missing data stays missing.</p></section>
-<section data-reveal><h2 data-i18n="docs.article.legacy.photon.title">Why Photon</h2><p data-i18n="docs.article.legacy.photon.body">A real workload and stress test.</p></section>
-        </div>
-        <nav class="docs-pager" aria-label="Documentation pagination">
-    <a href="renderer.html"><span data-i18n="docs.pager.previous">Previous</span><strong data-i18n="docs.nav.renderer">Renderer model</strong></a>
-    <a class="docs-pager-next" href="diagnostics.html"><span data-i18n="docs.pager.next">Next</span><strong data-i18n="docs.nav.diagnostics">Diagnostics & reports</strong></a>
-  </nav>
-        <footer class="docs-portal-footer"><span>Legacy Shader Bridge · by Onelsey</span><a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth →</a></footer>
+<section data-reveal>
+  <h2><span class="lang-en">Compatibility is a reconstruction process</span><span class="lang-ru">Compatibility — это процесс реконструкции</span></h2>
+  <p><span class="lang-en">The legacy frontend has to discover what the pack expects, map those expectations onto renderer-level resources and state, and then validate that the required producers actually exist. Translation without that validation would only move incorrect assumptions into Vulkan.</span><span class="lang-ru">Legacy frontend должен определить, чего ожидает pack, сопоставить эти ожидания с renderer-level ресурсами и state, а затем проверить, что нужные producers реально существуют. Перевод без такой проверки просто перенёс бы неправильные предположения в Vulkan.</span></p>
+</section>
+<section data-reveal>
+  <h2><span class="lang-en">Fail-closed behavior</span><span class="lang-ru">Fail-closed поведение</span></h2>
+  <p><span class="lang-en">When a path lacks required geometry, attachment contents, bindings or producer state, LSB should keep that path closed. This is intentionally stricter than producing a plausible image with fabricated inputs, because a visually convincing result can still violate the shader pack's actual contract.</span><span class="lang-ru">Когда пути не хватает нужной геометрии, attachment contents, bindings или producer state, LSB должен оставить этот path закрытым. Это намеренно строже, чем выдавать правдоподобную картинку на выдуманных inputs, потому что визуально убедительный результат всё равно может нарушать реальный контракт shader pack.</span></p>
+</section>
+<section data-reveal>
+  <h2><span class="lang-en">Why Photon is used</span><span class="lang-ru">Почему используется Photon</span></h2>
+  <p><span class="lang-en">Photon is useful because its multi-pass pipeline stresses shadows, deferred/composite work, temporal resources, scene geometry and attachment lifetimes at the same time. It is a development workload that exposes problems efficiently, not a special-case API target and not the final scope of compatibility.</span><span class="lang-ru">Photon полезен потому, что его multi-pass pipeline одновременно нагружает shadows, deferred/composite work, temporal resources, scene geometry и lifetime attachments. Это development workload, который эффективно вскрывает проблемы, а не специальная API-цель и не конечная граница compatibility.</span></p>
+</section></div>
+        <nav class="docs-pager" aria-label="Documentation pagination"><a href="pipeline.html"><span><span class="lang-en">Previous</span><span class="lang-ru">Назад</span></span><strong><span class="lang-en">Execution pipeline</span><span class="lang-ru">Pipeline исполнения</span></strong></a><a class="docs-pager-next" href="diagnostics.html"><span><span class="lang-en">Next</span><span class="lang-ru">Дальше</span></span><strong><span class="lang-en">Diagnostics</span><span class="lang-ru">Диагностика</span></strong></a></nav>
+        <footer class="docs-portal-footer"><span>Legacy Shader Bridge · by Onelsey</span><span><a href="../license.html">License</a> · <a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth →</a></span></footer>
       </article>
     </div>
   </main>

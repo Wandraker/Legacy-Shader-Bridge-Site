@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080a0f">
   <meta name="color-scheme" content="dark">
-  <meta name="description" content="Legacy Shader Bridge documentation portal.">
+  <meta name="description" content="Legacy Shader Bridge technical documentation.">
   <link rel="icon" type="image/webp" href="./assets/lsb-icon.webp">
   <link rel="stylesheet" href="./styles.css">
   <title>Legacy Shader Bridge — Documentation</title>
@@ -25,9 +25,7 @@
         <a href="./docs.html" data-i18n="nav.docs">Docs</a>
       </nav>
       <div class="header-actions">
-        <div class="language-switch" aria-label="Language">
-          <button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button>
-        </div>
+        <div class="language-switch" aria-label="Language"><button data-lang="en" type="button">EN</button><span>/</span><button data-lang="ru" type="button">RU</button></div>
         <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span></button>
       </div>
     </header>
@@ -51,38 +49,42 @@
     <div class="docs-portal">
       <aside class="docs-sidebar">
     <a class="docs-sidebar-brand" href="./docs.html"><img src="./assets/lsb-icon.webp" alt=""><strong>LSB DOCS</strong></a>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.start">Start here</span>
-      <a href="./docs.html" aria-current="page"><span data-i18n="docs.nav.home">home</span></a>
-      <a href="./docs/start.html"><span data-i18n="docs.nav.start">start</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.concepts">Concepts</span>
-      <a href="./docs/renderer.html"><span data-i18n="docs.nav.renderer">renderer</span></a>
-      <a href="./docs/legacy.html"><span data-i18n="docs.nav.legacy">legacy</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.development">Development</span>
-      <a href="./docs/diagnostics.html"><span data-i18n="docs.nav.diagnostics">diagnostics</span></a>
-    </div>
-    <div class="docs-sidebar-group"><span data-i18n="docs.side.future">Future</span>
-      <a href="./docs/native.html"><span data-i18n="docs.nav.native">native</span><em>PLANNED</em></a>
-    </div>
-  </aside>
+    <div class="docs-sidebar-group"><span><span class="lang-en">Start</span><span class="lang-ru">Начало</span></span><a href="./docs.html" aria-current="page"><span class="lang-en">Overview</span><span class="lang-ru">Обзор</span></a><a href="./docs/start.html"><span class="lang-en">Getting started</span><span class="lang-ru">С чего начать</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Core architecture</span><span class="lang-ru">Архитектура</span></span><a href="./docs/renderer.html"><span class="lang-en">Renderer model</span><span class="lang-ru">Модель рендерера</span></a><a href="./docs/contracts.html"><span class="lang-en">Contracts & semantics</span><span class="lang-ru">Контракты и семантика</span></a><a href="./docs/pipeline.html"><span class="lang-en">Execution pipeline</span><span class="lang-ru">Pipeline исполнения</span></a><a href="./docs/legacy.html"><span class="lang-en">Legacy frontend</span><span class="lang-ru">Legacy frontend</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Development</span><span class="lang-ru">Разработка</span></span><a href="./docs/diagnostics.html"><span class="lang-en">Diagnostics</span><span class="lang-ru">Диагностика</span></a></div><div class="docs-sidebar-group"><span><span class="lang-en">Future</span><span class="lang-ru">Будущее</span></span><a href="./docs/native.html"><span class="lang-en">Native LSB (future)</span><span class="lang-ru">Native LSB (будущее)</span></a></div></aside>
       <section class="docs-main">
-        <div class="docs-landing-hero" data-reveal>
-          <p class="eyebrow" data-i18n="docs.portal.kicker">Documentation</p>
-          <h1 data-i18n="docs.portal.title">Start with the renderer model.</h1>
-          <p data-i18n="docs.portal.lead">LSB documentation is structured as a path: understand the project first, then the renderer, the legacy frontend, diagnostics, and finally the planned native direction.</p>
-          <div class="docs-landing-actions">
-            <a class="button button-primary" href="./docs/start.html"><span data-i18n="docs.portal.start">Start here</span><span aria-hidden="true">→</span></a>
-            <a class="button button-ghost" href="./index.html"><span data-i18n="docs.portal.site">Project site</span></a>
-          </div>
-        </div>
-        <div class="docs-stable-note" data-reveal data-i18n="docs.portal.stable">Only stable contracts are documented here.</div>
-        <div class="docs-topic-grid">
-          <a class="docs-topic-card" href="./docs/start.html" data-reveal><div class="docs-topic-card-head"><span>01 / START</span><span class="docs-doc-badge" data-i18n="docs.badge.available">Available</span></div><h2 data-i18n="docs.card.start.title">Getting started</h2><p data-i18n="docs.card.start.body"></p></a>
-          <a class="docs-topic-card" href="./docs/renderer.html" data-reveal><div class="docs-topic-card-head"><span>02 / RENDERER</span><span class="docs-doc-badge" data-i18n="docs.badge.available">Available</span></div><h2 data-i18n="docs.card.renderer.title">Renderer model</h2><p data-i18n="docs.card.renderer.body"></p></a>
-          <a class="docs-topic-card" href="./docs/legacy.html" data-reveal><div class="docs-topic-card-head"><span>03 / LEGACY</span><span class="docs-doc-badge" data-i18n="docs.badge.available">Available</span></div><h2 data-i18n="docs.card.legacy.title">Legacy frontend</h2><p data-i18n="docs.card.legacy.body"></p></a>
-          <a class="docs-topic-card" href="./docs/diagnostics.html" data-reveal><div class="docs-topic-card-head"><span>04 / REPORTING</span><span class="docs-doc-badge" data-i18n="docs.badge.available">Available</span></div><h2 data-i18n="docs.card.diagnostics.title">Diagnostics</h2><p data-i18n="docs.card.diagnostics.body"></p></a>
-          <a class="docs-topic-card" href="./docs/native.html" data-reveal><div class="docs-topic-card-head"><span>05 / FUTURE</span><span class="docs-doc-badge docs-doc-badge--planned" data-i18n="docs.badge.planned">Planned</span></div><h2 data-i18n="docs.card.native.title">Native LSB</h2><p data-i18n="docs.card.native.body"></p></a>
+        <header class="docs-landing-hero" data-reveal>
+          <p class="eyebrow"><span class="lang-en">Documentation</span><span class="lang-ru">Документация</span></p>
+          <h1><span class="lang-en">Technical base for understanding LSB.</span><span class="lang-ru">Техническая база для понимания LSB.</span></h1>
+          <p><span class="lang-en">This documentation explains the stable architecture that exists underneath current development: where the compatibility frontend ends, what the renderer owns, how legacy contracts become native work, and what is deliberately left unfrozen for the future.</span><span class="lang-ru">Эта документация объясняет устойчивую архитектурную основу текущей разработки: где заканчивается compatibility frontend, чем владеет renderer, как legacy-контракты превращаются в нативную работу и что намеренно не фиксируется заранее для будущего.</span></p>
+          <div class="docs-landing-actions"><a class="button button-primary" href="./docs/start.html"><span class="lang-en">Start reading</span><span class="lang-ru">Начать читать</span> <span aria-hidden="true">→</span></a></div>
+        </header>
+        <div class="docs-diagram" data-reveal><div class="docs-diagram-title"><span class="lang-en">Where LSB sits in the rendering stack</span><span class="lang-ru">Где LSB находится в стеке рендеринга</span></div><svg viewBox="0 0 900 360" role="img" aria-label="LSB architecture overview">
+  <rect class="dg-box" x="40" y="45" width="210" height="74" rx="14"></rect>
+  <text class="dg-strong" x="145" y="76" text-anchor="middle">Legacy shader pack</text>
+  <text class="dg-small" x="145" y="96" text-anchor="middle">Iris / OptiFine-style semantics</text>
+
+  <rect class="dg-box dg-box-accent" x="345" y="35" width="220" height="94" rx="14"></rect>
+  <text class="dg-strong" x="455" y="72" text-anchor="middle">Compatibility frontend</text>
+  <text class="dg-small" x="455" y="94" text-anchor="middle">reconstruct · validate · adapt</text>
+
+  <rect class="dg-box dg-box-cyan" x="650" y="35" width="210" height="94" rx="14"></rect>
+  <text class="dg-strong" x="755" y="72" text-anchor="middle">LSB renderer core</text>
+  <text class="dg-small" x="755" y="94" text-anchor="middle">resources · passes · sync</text>
+
+  <path class="dg-line-accent" d="M250 82 H345"></path><polygon class="dg-arrow" points="337,76 345,82 337,88"></polygon>
+  <path class="dg-line-accent" d="M565 82 H650"></path><polygon class="dg-arrow" points="642,76 650,82 642,88"></polygon>
+
+  <rect class="dg-box" x="345" y="220" width="220" height="74" rx="14"></rect>
+  <text class="dg-strong" x="455" y="251" text-anchor="middle">Future native frontend</text>
+  <text class="dg-small" x="455" y="271" text-anchor="middle">direct LSB shader API</text>
+  <path class="dg-line" d="M565 257 C625 257 620 120 650 100"></path><polygon class="dg-arrow" points="642,102 650,100 646,108"></polygon>
+
+  <rect class="dg-box" x="650" y="220" width="210" height="74" rx="14"></rect>
+  <text class="dg-strong" x="755" y="251" text-anchor="middle">Native Vulkan backend</text>
+  <text class="dg-small" x="755" y="271" text-anchor="middle">GPU execution</text>
+  <path class="dg-line-accent" d="M755 129 V220"></path><polygon class="dg-arrow" points="749,212 755,220 761,212"></polygon>
+</svg><div class="docs-diagram-note"><span class="lang-en">The legacy frontend and the planned native frontend are different entry points into the same renderer. The renderer core is not the compatibility layer.</span><span class="lang-ru">Legacy frontend и запланированный native frontend — разные точки входа в один renderer. Сам renderer core не является compatibility layer.</span></div></div>
+        <div class="docs-reading">
+          <a class="docs-reading-row" href="./docs/start.html"><span>01</span><strong><span class="lang-en">Getting started</span><span class="lang-ru">С чего начать</span></strong><p><span class="lang-en">Project scope, current stage and what LSB is not.</span><span class="lang-ru">Границы проекта, текущий этап и чем LSB не является.</span></p><b>→</b></a><a class="docs-reading-row" href="./docs/renderer.html"><span>02</span><strong><span class="lang-en">Renderer model</span><span class="lang-ru">Модель рендерера</span></strong><p><span class="lang-en">Ownership boundaries, shared renderer responsibilities and optional integrations.</span><span class="lang-ru">Границы ownership, обязанности общего renderer и опциональные интеграции.</span></p><b>→</b></a><a class="docs-reading-row" href="./docs/contracts.html"><span>03</span><strong><span class="lang-en">Contracts & semantics</span><span class="lang-ru">Контракты и семантика</span></strong><p><span class="lang-en">What LSB reconstructs from legacy packs and what must be proven before a stage is trusted.</span><span class="lang-ru">Что LSB реконструирует из legacy pack и что должно быть доказано до доверия стадии.</span></p><b>→</b></a><a class="docs-reading-row" href="./docs/pipeline.html"><span>04</span><strong><span class="lang-en">Execution pipeline</span><span class="lang-ru">Pipeline исполнения</span></strong><p><span class="lang-en">How scene data, attachments and shader stages turn into ordered native GPU work.</span><span class="lang-ru">Как данные сцены, attachments и shader stages превращаются в упорядоченную нативную GPU-работу.</span></p><b>→</b></a><a class="docs-reading-row" href="./docs/legacy.html"><span>05</span><strong><span class="lang-en">Legacy frontend</span><span class="lang-ru">Legacy frontend</span></strong><p><span class="lang-en">Compatibility flow, fail-closed behavior and why Photon is used during development.</span><span class="lang-ru">Поток compatibility, fail-closed поведение и зачем в разработке используется Photon.</span></p><b>→</b></a><a class="docs-reading-row" href="./docs/diagnostics.html"><span>06</span><strong><span class="lang-en">Diagnostics</span><span class="lang-ru">Диагностика</span></strong><p><span class="lang-en">What evidence is useful for renderer bugs and why screenshots alone are often insufficient.</span><span class="lang-ru">Какие данные полезны для renderer-багов и почему одного скриншота часто недостаточно.</span></p><b>→</b></a><a class="docs-reading-row" href="./docs/native.html"><span>07</span><strong><span class="lang-en">Native LSB</span><span class="lang-ru">Native LSB</span></strong><p><span class="lang-en">Future direction only: goals and boundaries without inventing an API that does not exist yet.</span><span class="lang-ru">Только направление будущего: цели и границы без выдумывания API, которого ещё нет.</span></p><b>→</b></a>
         </div>
         <footer class="docs-portal-footer"><span>Legacy Shader Bridge · by Onelsey</span><span><a href="./license.html">License</a> · <a href="https://modrinth.com/mod/legacy-shader-bridge" target="_blank" rel="noreferrer">Modrinth →</a></span></footer>
       </section>
