@@ -330,6 +330,20 @@ const menuButton = document.querySelector(".menu-button");
 const menuClose = document.querySelector(".menu-close");
 
 if (document.body.classList.contains("docs-page")) {
+  const docsPortal = document.querySelector(".docs-portal");
+  if (docsPortal && !document.querySelector(".docs-private-alpha")) {
+    const notice = document.createElement("div");
+    notice.className = "docs-private-alpha";
+    notice.innerHTML = `
+      <strong><span class="lang-en">Private alpha</span><span class="lang-ru">Закрытая alpha</span></strong>
+      <p class="lang-en">LSB is currently in private alpha and under active architectural development. Source code will remain private while core renderer contracts and compatibility behavior are still being stabilized.</p>
+      <p class="lang-ru">LSB сейчас находится в закрытой alpha-стадии и активно развивается на архитектурном уровне. Исходный код останется закрытым, пока основные контракты renderer-а и поведение compatibility-слоя продолжают стабилизироваться.</p>
+    `;
+    docsPortal.insertAdjacentElement("beforebegin", notice);
+  }
+}
+
+if (document.body.classList.contains("docs-page")) {
   document.querySelectorAll(
     '.desktop-nav a[href*="#status"], .desktop-nav a[href*="#future"], .desktop-nav a[href$="docs.html"], .mobile-menu nav a[href*="#status"], .mobile-menu nav a[href*="#future"], .mobile-menu nav a[href$="docs.html"]'
   ).forEach((node) => node.remove());
