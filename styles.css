@@ -299,6 +299,13 @@ img { display: block; max-width: 100%; }
 
 
 .docs-page { background: linear-gradient(180deg, #080a0f, #0b0e15); }
+
+.docs-page .desktop-nav a[href*="#status"],
+.docs-page .desktop-nav a[href*="#future"],
+.docs-page .desktop-nav a[href$="docs.html"],
+.docs-page .mobile-menu nav a[href*="#status"],
+.docs-page .mobile-menu nav a[href*="#future"],
+.docs-page .mobile-menu nav a[href$="docs.html"] { display: none; }
 .lang-ru { display: none !important; }
 html[lang="ru"] .lang-en { display: none !important; }
 html[lang="ru"] .lang-ru { display: revert !important; }

@@ -329,6 +329,12 @@ const menu = document.querySelector(".mobile-menu");
 const menuButton = document.querySelector(".menu-button");
 const menuClose = document.querySelector(".menu-close");
 
+if (document.body.classList.contains("docs-page")) {
+  document.querySelectorAll(
+    '.desktop-nav a[href*="#status"], .desktop-nav a[href*="#future"], .desktop-nav a[href$="docs.html"], .mobile-menu nav a[href*="#status"], .mobile-menu nav a[href*="#future"], .mobile-menu nav a[href$="docs.html"]'
+  ).forEach((node) => node.remove());
+}
+
 function getInitialLanguage() {
   const saved = localStorage.getItem("lsb-language");
   if (saved === "ru" || saved === "en") return saved;
